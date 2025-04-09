@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour {
 
@@ -175,7 +174,7 @@ public class Player : MonoBehaviour {
 
 	#region Combat
 
-	#region Aiming
+	#region Inputs
 
 	private Vector2 AimVector;
 
@@ -201,19 +200,20 @@ public class Player : MonoBehaviour {
 		}
 	}
 
+	public void AttackListener(bool debug = false) {
+		if (Input.GetKeyDown(KeyCode.Mouse0)) {
+			FireProjectile(debug);
+			FireLaser(debug);
+			if (debug) Debug.Log($"[Player | {name}] Attack input received.");
+		}
+	}
+
 	#endregion
 
 	#region Projectiles
 
 	[Header("Attacks")]
 	public GameObject ProjectilePrefab;
-
-	public void AttackListener(bool debug = false) {
-		if (Input.GetKeyDown(KeyCode.Mouse0)) {
-			FireProjectile(debug);
-			if (debug) Debug.Log($"[Player | {name}] Attack input received.");
-		}
-	}
 
 	public void FireProjectile(bool debug = false) {
 		//Instantiate a hitObject.
@@ -233,20 +233,21 @@ public class Player : MonoBehaviour {
 
 	public float Lifespan = 1;
 
-	public void FireLaser() {
-		#region Raycasts and Effects
+	public void FireLaser(bool debug = false) {
 
 		//Perform a raycast scan
-		Vector2 laserDirection = transform.up;
-		RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, laserDirection, LaserRange);
+		RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, AimVector, LaserRange);
 
 		//For every object hit by the laser beam...
 		foreach (RaycastHit2D hit in hits) {
 
-			//If the object is not this player...
-			if (hit.collider.gameObject != gameObject) {
-				Debug.Log($"[{gameObject.name}] Hit {hit.collider.gameObject.name} at {hit.distance:F2} units.");
+			GameObject hitObject = hit.collider.gameObject;
 
+			//If the object is not this player...
+			if (hitObject != gameObject) {
+				if (debug) Debug.Log($"[{gameObject.name}] Hit {hitObject.name} at {hit.distance:F2} units.");
+
+				//TODO: Add explosion effect.
 				//Explodes where the laser hits
 				//GameObject boom = Instantiate(Explosion, hit.point, transform.rotation);
 				//boom.GetComponent<Explosion>().ExplosionSize = 3;
@@ -257,7 +258,7 @@ public class Player : MonoBehaviour {
 				//laser.transform.localScale = new Vector3(1, hit.distance, 1);
 
 				//If the object is a player, kill it.
-				if (hit.collider.gameObject.GetComponent<Player>() is Player player) player.DoDamage(hit);
+				if (hitObject.GetComponent<Player>() is Player player) player.DoDamage(hit);
 
 				break;
 			}
@@ -268,8 +269,9 @@ public class Player : MonoBehaviour {
 
 		//If the laser beam reaches its max range...
 		if (hits.Length == 1) {
-			Debug.Log($"[{gameObject.name}] Laser beam reached max range.");
+			if (debug) Debug.Log($"[{gameObject.name}] Laser beam reached max range.");
 
+			//TODO: Add laser sprite.
 			//Spawns the laser sprite between the shooter and the laser's max range.
 			//Vector2 deltaGap = Vector2.Lerp(transform.position, transform.position + transform.up * LaserRange, 0.5f);
 			//GameObject laser = Instantiate(LaserSprite, deltaGap, transform.rotation);
@@ -277,9 +279,7 @@ public class Player : MonoBehaviour {
 		}
 
 		//Draws the laser beam in the Scene view for debugging.
-		Debug.DrawRay(transform.position, laserDirection * LaserRange, Color.red, 10f);
-
-		#endregion
+		Debug.DrawRay(transform.position, AimVector * LaserRange, Color.red, 5f);
 	}
 
 	#endregion
