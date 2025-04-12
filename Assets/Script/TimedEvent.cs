@@ -1,4 +1,6 @@
-public class TimedEvent {
+using UnityEngine;
+
+public class TimedEvent : MonoBehaviour {
 	/// <summary>
 	/// 	When the event starts.
 	/// 	<br/><br/>
@@ -32,6 +34,15 @@ public class TimedEvent {
 	public float Offset = 0;
 
 	/// <summary>
+	///		When the event starts in seconds.
+	///		<br/><br/>
+	///		DO NOT SET THIS MANUALLY. <br/>
+	///		This is calculated in <see cref="Track"/> by getting the duration
+	///		(in seconds) of the event's start step, beat, and bar combined.
+	/// </summary>
+	public double StartTime;
+
+	/// <summary>
 	///		The kinds of events that may be triggered.
 	/// </summary>
 	public enum EventType { None, Segment, Attack, Custom }
@@ -46,5 +57,9 @@ public class TimedEvent {
 		StartBeat = beat;
 		StartStep = step;
 		Offset = offset;
+	}
+
+	public virtual void Execute() {
+		Debug.Log($"[TimedEvent] Executing {Type} event by doing nothing. Override me!");
 	}
 }
