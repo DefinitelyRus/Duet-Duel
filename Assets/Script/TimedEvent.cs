@@ -52,6 +52,16 @@ public class TimedEvent : MonoBehaviour {
 	/// </summary>
 	public EventType Type = EventType.None;
 
+	/// <summary>
+	/// 	Which player this event will apply its effects to.
+	/// </summary>
+	public enum TargetPlayer { None, Player1, Player2, Both }
+
+	/// <summary>
+	/// 	Which player this event will apply its effects to.
+	/// </summary>
+	public TargetPlayer Target = TargetPlayer.None;
+
 	public TimedEvent(EventType type, int beat, int step = 1, float offset = 0) {
 		Type = type;
 		StartBeat = beat;
@@ -59,7 +69,13 @@ public class TimedEvent : MonoBehaviour {
 		Offset = offset;
 	}
 
-	public virtual void Execute() {
+	/// <summary>
+	/// Executes the event and may apply effects or read info from the given object.
+	/// <br/><br/>
+	/// The given object is usually a <see cref="Player"/>.
+	/// </summary>
+	/// <param name="obj"></param>
+	public virtual void Execute(Object obj) {
 		Debug.Log($"[TimedEvent] Executing {Type} event by doing nothing. Override me!");
 	}
 }

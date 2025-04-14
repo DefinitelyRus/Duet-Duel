@@ -70,7 +70,7 @@ public class AttackNote : TimedEvent {
 		Offset = offset;
 	}
 
-	public override void Execute() {
+	public override void Execute(Object obj) {
 		Debug.Log($"[AttackNote] Firing {Attack}...");
 
 		//TODO: Ensure that the scores apply.

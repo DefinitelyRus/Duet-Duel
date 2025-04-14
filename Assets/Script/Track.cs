@@ -217,13 +217,28 @@ public class Track : MonoBehaviour {
 
 	#endregion
 
-	#region Audio Clip
-
 	/// <summary>
 	/// The audio clip that will be played.
 	/// </summary>
 	[Header("Audio Clip")]
 	public AudioClip AudioClip;
+
+	#region Unity
+
+	/// <summary>
+	/// Loads the track and its associated audio clip into memory.
+	/// <br/><br/>
+	/// This game object must start before `MusicDirector`.
+	/// Otherwise, the audio clip will not be loaded.
+	/// </summary>
+	public void Start() {
+		//Debug.Log($"[Track] Loading track...");
+		//GrabAudioClip();
+	}
+
+	#endregion
+
+	#region Unused
 
 	/// <summary>
 	/// 	Loads the audio clip from the given path.
@@ -236,8 +251,9 @@ public class Track : MonoBehaviour {
 	/// <param name="overrideExisting">
 	///		Allows using `path` as the new `FilePath`.
 	/// </param>
+	[Obsolete("Please manually assign the audio clip in the inspector.", true)]
 	public AudioClip GrabAudioClip(string path = null, bool overrideExisting = false, bool debug = false) {
-		
+
 		if (debug) Debug.Log($"[Track] Loading audio clip from \"{path}\"...");
 
 		//Use existing path if no path is given.
@@ -257,32 +273,12 @@ public class Track : MonoBehaviour {
 		if (AudioClip == null) {
 			Debug.LogError($"[Track] Failed to load audio clip.");
 			return null;
-		}
-
-		else {
+		} else {
 			Debug.Log($"[Track] Loaded audio clip: {AudioClip.name}.");
 			return AudioClip;
 		}
 	}
 
-	#endregion
-
-	#region Unity
-
-	/// <summary>
-	/// Loads the track and its associated audio clip into memory.
-	/// <br/><br/>
-	/// This game object must start before `MusicDirector`.
-	/// Otherwise, the audio clip will not be loaded.
-	/// </summary>
-	public void Start() {
-		Debug.Log($"[Track] Loading track...");
-		GrabAudioClip();
-	}
-
-	#endregion
-
-	#region Unused
 	[Obsolete("Please create an instance of a Track prefab instead.", true)]
 	public Track(string name, string path, float tempo, int beatsPerBar, int stepsPerBeat, string artist = null, string beatmapper = null, float startOffset = 0) {
 		Name = name;

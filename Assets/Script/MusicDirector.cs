@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -10,9 +11,9 @@ public class MusicDirector : MonoBehaviour {
 
 	public Track Track;
 
-	private List<TimedEvent> Events;
+	private List<TimedEvent> EventsNow;
 
-	private List<AttackNote> LongAttacks;
+	private List<AttackNote> LongAttacks = new();
 
 	public AudioSource MusicPlayer;
 
@@ -58,9 +59,19 @@ public class MusicDirector : MonoBehaviour {
 	}
 
 	void Start() {
-		MusicPlayer.clip = Track.AudioClip;
+		try {
+			Debug.Log("[MusicDirector] Loading audio...");
+			MusicPlayer.clip = Track.AudioClip;
+		}
 
-		Events = Track.GetEventsInRange(0, LoadedBarCount, true);
+		catch (NullReferenceException e) {
+			Debug.LogError($"[MusicDirector] Failed to load audio clip:{e.StackTrace}");
+		}
+
+		Debug.Log("[MusicDirector] Loading events...");
+		EventsNow = Track.GetEventsInRange(0, LoadedBarCount, true);
+
+		Debug.Log("[MusicDirector] Loading configuring start delay...");
 
 		//Beat counter before audio
 		if (Track.StartOffset > 0) {
@@ -136,22 +147,25 @@ public class MusicDirector : MonoBehaviour {
 		#region Loading Events
 
 		//If all queued events have been played, load next batch.
-		if (LoadedBarCount > 0 && Events.Count == 0) {
+		//Does so only if LoadedBarCount is positive.
+		if (EventsNow.Count == 0 && LoadedBarCount > 0) {
 			int start = CurrentBar + 1;
 			int end = start + LoadedBarCount;
-			Events = Track.GetEventsInRange(start, end, true);
+			EventsNow = Track.GetEventsInRange(start, end, true);
 
-			if (Events.Count == 0) {
+			if (EventsNow.Count == 0) {
 				Debug.Log("[MusicDirector] No more events to load.");
 				//TODO: Do something...? idk
 			}
 		}
+		//NOTE: Can be optimized by loading ahead of the playback.
+		//NOTE: Can be optimized by loading events in another thread.
 
 		#endregion
 
 		#region Event Playback
 
-		foreach (TimedEvent e in Events) {
+		foreach (TimedEvent e in EventsNow) {
 			double lastEventTime = 0d;
 			if (LastPlayedEvent != null) lastEventTime = LastPlayedEvent.StartTime;
 
@@ -159,7 +173,7 @@ public class MusicDirector : MonoBehaviour {
 			bool isAfterLast = lastEventTime < e.StartTime;
 
 			if (isAfterLast && isBeforeTimer) {
-				ExecuteEvent(e);
+				e.Execute(null); //TODO: FIX
 				LastPlayedEvent = e;
 				CurrentBar = e.Bar;
 				CurrentBeat = e.StartBeat;
@@ -190,16 +204,12 @@ public class MusicDirector : MonoBehaviour {
 				CurrentBeat,
 				CurrentStep
 			);
-			ExecuteEvent(tail);
+			tail.Execute(null); //TODO: FIX
 
 			attack.DurationLeft--;
 			if (attack.DurationLeft <= 0) LongAttacks.Remove(attack);
 		}
 
 		#endregion
-	}
-
-	private void ExecuteEvent(TimedEvent e) {
-
 	}
 }
