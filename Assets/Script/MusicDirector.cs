@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class MusicDirector : MonoBehaviour {
 
+	#region Game Objects and Components
+
+	[Header("Game Objects and Components")]
 	public Player Player1;
 
 	public Player Player2;
@@ -17,7 +19,168 @@ public class MusicDirector : MonoBehaviour {
 
 	public AudioSource MusicPlayer;
 
-	private double Timer = 0d;
+	private TimedEvent LastPlayedEvent;
+
+	public AudioSource MetronomeHigh;
+
+	public AudioSource MetronomeLow;
+
+	#endregion
+
+	#region Ticker
+
+	/// <summary>
+	///		How many bars have been played so far since the start of the song.
+	///		<br/><br/>
+	///		This must be initialized as 1. <br/>
+	/// </summary>
+	[Header("Ticker")]
+	public int CurrentBar = 1;
+
+	/// <summary>
+	///		What step the player is currently on. Resets to 1 after every beat.
+	///		<br/><br/>
+	///		This must be initialized as 0. <br/>
+	/// </summary>
+	public int CurrentStep = 0;
+
+	/// <summary>
+	///		What beat the player is currently on. Resets to 1 after every bar.
+	///		<br/><br/>
+	///		This must be initialized as 2. <br/>
+	/// </summary>
+	public int CurrentBeat = 2;
+
+	/// <summary>
+	///		How long (in seconds) each step takes.
+	///		This is used to check if a step has been completed since the previous frame.
+	///		<br/><br/>
+	///		Update this when changing the <see cref="Track.BPM"/>.
+	/// </summary>
+	public double StepDuration = 0;
+
+	/// <summary>
+	///		How many seconds passed since the last step.
+	/// </summary>
+	public double TimeSinceLastStep { get; private set; }
+
+	/// <summary>
+	///		Counts how many steps have passed since the last check.
+	///		It will continue to accumulate time until
+	///		1x (or higher) <see cref="StepDuration"/> has passed.
+	///		At which point, the ticker increses by 1 step and the
+	///		<see cref="TimeSinceLastStep"/> is reduced by <see cref="StepDuration"/>.
+	/// </summary>
+	/// <returns>
+	///		The number of steps that have passed since you last checked.
+	/// </returns>
+	public int StepsAccumulated() {
+		return (int) (TimeSinceLastStep / StepDuration);
+	}
+
+	/// <summary>
+	///		Updates the CurrentStep, CurrentBeat, and CurrentBar
+	///		with respect to their time signature and limits.
+	/// </summary>
+	/// <param name="stepCount">
+	///		How many steps to move the ticker forward.
+	/// </param>
+	private void Tick(int stepCount, bool debug = false) {
+
+		#region Checks
+
+		if (stepCount == 0) {
+			return;
+		} else if (stepCount < 0) {
+			Debug.LogError("[MusicDirector] stepCount cannot be a negative number.");
+			return;
+		}
+
+		#endregion
+
+		#region Calculation & Sounds
+
+		//Next step
+		CurrentStep += stepCount;
+		TimeSinceLastStep -= StepDuration * stepCount;
+
+		//Next beat
+		while (CurrentStep > Track.Denominator) {
+			CurrentBeat++;
+			CurrentStep -= Track.Denominator;
+			MetronomeLow.Stop();
+			MetronomeLow.Play();
+
+			if (debug) Debug.Log("[MusicDirector] Next beat!");
+
+			Player1.FireProjectile(); //TODO: Remove!
+		}
+
+		//Next bar
+		while (CurrentBeat > Track.Numerator) {
+			CurrentBar++;
+			CurrentBeat -= Track.Numerator;
+			MetronomeHigh.Stop();
+			MetronomeHigh.Play();
+
+			if (debug) Debug.Log("[MusicDirector] Next bar!");
+
+			Player1.FireLaser(); //TODO: Remove!
+		}
+
+		if (debug) Debug.Log($"[MusicDirector] {CurrentStep}:{CurrentBeat}:{CurrentBar}");
+
+		#endregion
+
+	}
+
+	/// <summary>
+	///		Acts as the gate to allow the ticker to begin ticking.
+	///		<br/><br/>
+	///		If <see cref="delayedStart"/> is true, this will update the
+	///		<see cref="Timer"/> return false until the delayed time has passed. <br/>
+	///		Once the ticker starts, this will no longer do anything.
+	/// </summary>
+	/// <returns>
+	///		A clearance to start ticking away.
+	/// </returns>
+	bool HasTickerStarted() {
+
+		//This will no longer run once both the beatmap and audio have started.
+		if (delayedStart) {
+			double offset = Track.StartOffset;
+
+			//Music starts after timed delay.
+			//+offset: Audio starts after the ticker.
+			//Song starts at `Timer >= offset`.
+			//Timer starts at 0.
+			//Ticker starts at 0.
+			if (offset > 0 && Timer >= offset) {
+				Debug.Log("[MusicDirector] Music started after timed delay.");
+				delayedStart = false;
+				MusicPlayer.Play();
+			}
+
+			//Ticker starts after timed delay.
+			//-offset: Audio starts before the ticker.
+			//Song starts at `offset`.
+			//Timer starts at `offset`.
+			//Ticker starts at 0.
+			else if (offset < 0 && Timer >= 0) {
+				Debug.Log("[MusicDirector] Ticker started after timed delay.");
+				delayedStart = false;
+			}
+
+			//Return false if the ticker hasn't started yet. (Timer < 0)
+			else return false;
+		}
+
+		return true;
+	}
+
+	#endregion
+
+	#region Miscellaneous
 
 	/// <summary>
 	/// How many bars to load at once.
@@ -26,121 +189,110 @@ public class MusicDirector : MonoBehaviour {
 	/// For really short songs or if you have a lot of memory. <br/>
 	/// Good for avoiding lag spikes when loading a large number of events.
 	/// <br/><br/>
-	/// 1-64 = Load X number of bars at once once all loaded events have been played. <br/>
+	/// 1-64 = Load X number of bars when all loaded events have been played. <br/>
 	/// 1-4 = Good for high-density beat maps. <br/>
 	/// 5-16 = Good for long songs. <br/>
 	/// 17-64 = Only use if the song is too long and/or dense for 0. <br/>
 	/// 65+ = You should just use 0.
 	/// </summary>
+	[Header("Miscellaneous")]
 	[Range(0, 64)]
 	public int LoadedBarCount = 16;
 
 	/// <summary>
-	/// How many bars have been played so far since the start of the song.
+	///		How many seconds has passed since the ticker started.
 	/// </summary>
-	public int CurrentBar = 0;
+	private double Timer = 0d;
+
+	#endregion
+
+	#region Flags
 
 	/// <summary>
-	/// What step the player is currently on. Resets to 1 after every beat.
+	///		Whether to make a sound whenever it ticks to a new beat/bar.
 	/// </summary>
-	public int CurrentStep = 0;
+	[Header("Flags")]
+	public bool EnableMetronome = false;
 
 	/// <summary>
-	/// What beat the player is currently on. Resets to 1 after every bar.
+	///		Marks whether the song has no more <see cref="TimedEvent"/>s.
+	///		<br/><br/>
+	///		This prevents further event loading attempts when all
+	///		<see cref="TimedEvent"/> objects have already been loaded.
 	/// </summary>
-	public int CurrentBeat = 0;
+	public bool HasSongEnded = false;
 
-	TimedEvent LastPlayedEvent;
+	/// <summary>
+	///		Marks whether the audio starts before or after when the ticker starts.
+	/// </summary>
+	private bool delayedStart = false;
 
-	bool delayedStart = false;
+	#endregion
 
-	private double GetStepDuration() {
-		return 60d / Track.BPM / Track.Denominator;
-	}
+	#region Unity
 
 	void Start() {
+
+		#region Loading audio and events
+
 		try {
 			Debug.Log("[MusicDirector] Loading audio...");
 			MusicPlayer.clip = Track.AudioClip;
 		}
-
+		
 		catch (NullReferenceException e) {
-			Debug.LogError($"[MusicDirector] Failed to load audio clip:{e.StackTrace}");
+			Debug.LogError($"[MusicDirector] Failed to load audio clip: {e.Message}");
 		}
 
 		Debug.Log("[MusicDirector] Loading events...");
 		EventsNow = Track.GetEventsInRange(0, LoadedBarCount, true);
 
+		#endregion
+
+		#region Audio/Ticker start delay
+
 		Debug.Log("[MusicDirector] Loading configuring start delay...");
 
-		//Beat counter before audio
+		//Audio starts after delay
 		if (Track.StartOffset > 0) {
-			Debug.Log($"[MusicDirector] Song starts after the beat counter. Delaying song start.");
-
-			/*
-			 * Having a negative start offset means the song will start
-			 * playing after the beat counter has started counting.
-			 * This is prone to audio desync if the frame it
-			 * starts on lasts significantly longer than usual.
-			 * 
-			 * On the first frame that the Timer exceeds
-			 * the start offset, the audio will start playing.
-			 */
+			Debug.Log($"[MusicDirector] Audio will start after a timed delay.");
 
 			delayedStart = true;
 		}
-		
-		//Audio before beat counter
+
+		//Ticker starts after delay
 		else if (Track.StartOffset < 0) {
-			Debug.Log($"[MusicDirector] Song starts before the beat counter. Delaying beat counter start.");
-			/*
-			 * Having a positive start offset means the song will start
-			 * playing before the beat counter has started counting.
-			 * This is prone to audio desync if the frame it
-			 * starts on lasts significantly longer than usual.
-			 * 
-			 * On the first frame that the Timer exceeds 0,
-			 * the beat counter will start counting.
-			 */
+			Debug.Log($"[MusicDirector] Ticker will start after a timed delay.");
 
 			Timer = -Track.StartOffset;
 			delayedStart = true;
 			MusicPlayer.Play();
 		}
+
+		StepDuration = 60d / Track.BPM / Track.Denominator;
+
+		#endregion
+
 	}
 
-    void Update()
-    {
-        Timer += Time.deltaTime;
+	private void FixedUpdate() {
 
-		#region Audio Offset
+		Timer += Time.fixedDeltaTime;
 
-		//This will no longer run once both the beatmap and audio have started.
-		if (delayedStart) {
-			double offset = Track.StartOffset;
+		//Waits until ticker starts.
+		if (!HasTickerStarted()) return;
 
-			//+offset: Audio starts after the beat counter.
-			//Song starts at `Timer >= offset`.
-			//Timer starts at 0.
-			//Beat counter starts at 0.
-			if (offset > 0 && Timer >= offset) {
-				Debug.Log("[MusicDirector] Music started after timed delay.");
-				delayedStart = false;
-				MusicPlayer.Play();
-			}
+		TimeSinceLastStep += Time.deltaTime;
 
-			//-offset: Audio starts before the beat counter.
-			//Song starts at `offset`.
-			//Timer starts at `offset`.
-			//Beat counter starts at 0.
-			if (offset < 0 && Timer >= 0) {
-				Debug.Log("[MusicDirector] Beat counter started after timed delay.");
-				delayedStart = false;
-			}
-			
-			//Return if the beat counter hasn't started yet. (Timer < 0)
-			else return;
-		}
+		Tick(StepsAccumulated());
+	}
+
+	void Update() {
+
+		#region Checks
+
+		//Waits until ticker starts.
+		if (HasTickerStarted()) return;
 
 		#endregion
 
@@ -148,13 +300,15 @@ public class MusicDirector : MonoBehaviour {
 
 		//If all queued events have been played, load next batch.
 		//Does so only if LoadedBarCount is positive.
-		if (EventsNow.Count == 0 && LoadedBarCount > 0) {
+		if (EventsNow.Count == 0 && LoadedBarCount > 0 && !HasSongEnded) {
 			int start = CurrentBar + 1;
 			int end = start + LoadedBarCount;
 			EventsNow = Track.GetEventsInRange(start, end, true);
 
 			if (EventsNow.Count == 0) {
 				Debug.Log("[MusicDirector] No more events to load.");
+				HasSongEnded = true;
+
 				//TODO: Do something...? idk
 			}
 		}
@@ -175,9 +329,6 @@ public class MusicDirector : MonoBehaviour {
 			if (isAfterLast && isBeforeTimer) {
 				e.Execute(null); //TODO: FIX
 				LastPlayedEvent = e;
-				CurrentBar = e.Bar;
-				CurrentBeat = e.StartBeat;
-				CurrentStep = e.StartStep;
 
 				Debug.Log($"[MusicDirector] Executing event: {e.Type} at {e.StartTime}.");
 
@@ -211,5 +362,9 @@ public class MusicDirector : MonoBehaviour {
 		}
 
 		#endregion
+
 	}
+
+	#endregion
+
 }

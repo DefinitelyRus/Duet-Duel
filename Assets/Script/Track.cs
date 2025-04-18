@@ -123,7 +123,7 @@ public class Track : MonoBehaviour {
 				$"Low: {lowIndex} -> High: {highIndex} | At {pointer} (Bar {pointerBar})");
 
 			pointer = (lowIndex + highIndex) / 2;
-			pointerBar = Events[pointer].Bar;
+			pointerBar = Events[pointer].StartBar;
 
 			//Closes in on the closest point to the start point.
 			if (pointerBar < start) lowIndex = pointer + 1;
@@ -150,7 +150,7 @@ public class Track : MonoBehaviour {
 						return new();
 					}
 
-					pointerBar = Events[pointer].Bar;
+					pointerBar = Events[pointer].StartBar;
 
 					//If pointing at or before `end`...
 					if (pointerBar <= end) {
@@ -176,13 +176,13 @@ public class Track : MonoBehaviour {
 			e = Events[i];
 
 			//If the event is within the range, add it to the list.
-			if (e.Bar >= start && e.Bar <= end) {
+			if (e.StartBar >= start && e.StartBar <= end) {
 				events.Add(SetStartTime(e));
-				if (debug) Debug.Log($"[Track] Added event at bar {e.Bar}.");
+				if (debug) Debug.Log($"[Track] Added event at bar {e.StartBar}.");
 			}
 
 			//If the event is past the end, break.
-			else if (e.Bar > end) {
+			else if (e.StartBar > end) {
 				if (debug) Debug.Log($"[Track] No more events in range.");
 				break;
 			}
@@ -207,7 +207,7 @@ public class Track : MonoBehaviour {
 		double beatsPerSecond = beatsPerMinute / Numerator;
 		double secondsPerStep = 1d / (beatsPerSecond * Denominator);
 
-		int barCount = (e.Bar - 1) * Numerator * Denominator;
+		int barCount = (e.StartBar - 1) * Numerator * Denominator;
 		int beatCount = (e.StartBeat - 1) * Denominator;
 		int totalSteps = barCount + beatCount + (e.StartStep - 1);
 

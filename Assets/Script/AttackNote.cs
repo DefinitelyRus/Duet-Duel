@@ -48,7 +48,8 @@ public class AttackNote : TimedEvent {
 	///		When the attack was last played.
 	///		<br/><br/>
 	///		Yes, it's not accompanied by a `LastBeatPlayed`.
-	///		All we need to know is whether it's still on the same step or not.
+	///		All we need to know is whether it's still on the same step or not. <br/>
+	///		This is used for tracking long notes.
 	/// </summary>
 	public int LastStepPlayed = 0;
 

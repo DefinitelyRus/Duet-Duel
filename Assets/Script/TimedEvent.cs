@@ -6,7 +6,7 @@ public class TimedEvent : MonoBehaviour {
 	/// 	<br/><br/>
 	/// 	Counts from 1. Values below 1 are invalid.
 	/// </summary>
-	public int Bar = 0;
+	public int StartBar = 0;
 
 	/// <summary>
 	///		When the event starts.
