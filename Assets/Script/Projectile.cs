@@ -59,21 +59,18 @@ public class Projectile : MonoBehaviour
 
 			//Projectile despawns itself
 			case ScoreType.Expired:
-				Debug.Log("Projectile expired.");
 				score = ScoreWeight * ExpiredMultiplier;
 				if (debug) Debug.Log($"[Projectile] Expired! Score: {score}");
 				break;
 
 			//Projectile hits player
 			case ScoreType.PlayerContact:
-				Debug.Log("Projectile hit player.");
 				score = ScoreWeight * PlayerContactMultiplier;
 				if (debug) Debug.Log($"[Projectile] Player contact! Score: {score}");
 				break;
 			
 			//Projectile hits environment (usually also subsequently destroyed)
 			case ScoreType.Environment:
-				Debug.Log("Projectile hit environment.");
 				score = ScoreWeight * EnvironmentMultiplier;
 				if (debug) Debug.Log($"[Projectile] Environment contact! Score: {score}");
 				break;
@@ -147,7 +144,7 @@ public class Projectile : MonoBehaviour
 		else if (shallBounceOffEnvironment || shallImpactWithEnvironment) Collider.includeLayers = LayerMask.GetMask("Environment");
 	}
 
-	//For tracking expiration, among others.
+	//For tracking expiration.
 	private void Update() {
 		Lifespan -= Time.deltaTime;
 		if (Lifespan <= 0) DestroySelf(ScoreType.Expired);

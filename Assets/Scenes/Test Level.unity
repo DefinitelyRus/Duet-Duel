@@ -898,7 +898,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.61, y: 2.23, z: -10}
+  m_LocalPosition: {x: 7.83, y: 2.23, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2843,13 +2843,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InputKey1: 122
   InputKey2: 120
+  InputKey3: 99
+  P1Projectile: 49
+  P1Laser: 50
+  P2Projectile: 51
+  P2Laser: 52
+  NoneEvent: 53
+  SegmentEvent: 54
+  CustomEvent: 55
   SaveKey: 13
-  AttackTypeToggle: 303
-  AttackType: 0
-  CurrentNote1: {fileID: 0}
-  CurrentNote2: {fileID: 0}
+  CurrentAttack: {fileID: 0}
+  CurrentEvent: {fileID: 0}
   Director: {fileID: 1086756497}
   LastStepPlayed: 0
+  InputAllowance: 0.7
+  InputType: 0
+  LowPrecisionInput: 0
 --- !u!4 &1350935594
 Transform:
   m_ObjectHideFlags: 0

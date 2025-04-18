@@ -220,7 +220,7 @@ public class Player : MonoBehaviour {
 		GameObject projectile = Instantiate(ProjectilePrefab, transform.position, Quaternion.identity);
 		Projectile script = projectile.GetComponent<Projectile>();
 		script.Parent = gameObject;
-		script.Fire(AimVector, 1, 1, true);
+		script.Fire(AimVector, 1, 1);
 
 		if (debug) Debug.Log($"[Player | {name}] Projectile fired!");
 	}

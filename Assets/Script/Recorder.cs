@@ -63,6 +63,8 @@ public class Recorder : MonoBehaviour
 
 	public void NewEvent(bool debug = false) {
 
+		if (debug) Debug.Log("[Recorder] Creating new event...");
+
 		#region Early input handling
 
 		int AssignedStep = LowPrecisionInput ? 1 : Director.CurrentStep;
@@ -111,6 +113,8 @@ public class Recorder : MonoBehaviour
 	/// <param name="debug">
 	/// </param>
 	private void NewAttack(bool debug = false) {
+
+		if (debug) Debug.Log("[Recorder] Creating new attack...");
 
 		#region Early input handling
 
@@ -164,6 +168,8 @@ public class Recorder : MonoBehaviour
 		CurrentAttack.Duration += steps;
 
 		if (debug) Debug.Log($"[Recorder] Increased {CurrentAttack.name} duration to {CurrentAttack.Duration}");
+
+		//BUG: For some reason this doesn't work. I'm not sure why.
 	}
 
 	void Save() {
@@ -171,7 +177,12 @@ public class Recorder : MonoBehaviour
 		//Save them all into a list then convert to JSON.
 	}
 
-	//TODO: Write summaries
+	/// <summary>
+	///		Contains all the checker logic for handling user inputs.
+	/// </summary>
+	/// <param name="debug">
+	///		Whether to print logs into the console.
+	/// </param>
 	private void InputListener(bool debug = false) {
 
 		#region Mode switching
@@ -228,34 +239,36 @@ public class Recorder : MonoBehaviour
 
 		#endregion
 
-		//Recording
+		#region Timed Inputs
 
-		/*
-		 * LowPrecisionInput is enabled if InputKey3 is pressed
-		 * or 
-		 */
-		//LowPrecisionInput = !(Input.GetKeyDown(InputKey1) || Input.GetKeyDown(InputKey2));
 		LowPrecisionInput = Input.GetKeyDown(InputKey3);
-		bool isPressed = Input.GetKeyDown(InputKey1)
-			|| Input.GetKeyDown(InputKey2) || Input.GetKeyDown(InputKey3);
-		bool stillPressed = Input.GetKey(InputKey1)
-			|| Input.GetKey(InputKey2) || Input.GetKey(InputKey3);
-		bool isReleased = Input.GetKeyUp(InputKey1)
-			|| Input.GetKeyUp(InputKey2) || Input.GetKey(InputKey3);
+		bool isPressed =
+			Input.GetKeyDown(InputKey1) ||
+			Input.GetKeyDown(InputKey2) ||
+			Input.GetKeyDown(InputKey3);
+		bool stillPressed =
+			Input.GetKey(InputKey1) ||
+			Input.GetKey(InputKey2) ||
+			Input.GetKey(InputKey3);
+		bool isReleased =
+			Input.GetKeyUp(InputKey1) ||
+			Input.GetKeyUp(InputKey2) ||
+			Input.GetKey(InputKey3);
 
+		//Initial press
 		if (isPressed) {
-			if (InputType == 1) {
-				NewAttack(true);
-			}
-
-			else if (InputType == 2) {
-				NewEvent(true);
-			}
+			if (InputType == 1) NewAttack(true);
+			else if (InputType == 2) NewEvent(true);
+			else Debug.LogWarning("[Recorder] Invalid or no input type selected.");
 		}
 
+		//Hold
 		else if (stillPressed && InputType == 1) ExtendAttack(true);
 
+		//Release
 		if (isReleased && !stillPressed) CurrentAttack = null;
+
+		#endregion
 
 		if (Input.GetKeyDown(SaveKey)) Save();
 
