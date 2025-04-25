@@ -1,6 +1,7 @@
+using Newtonsoft.Json;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem.Controls;
-using static TimedEvent;
+using Formatting = Newtonsoft.Json.Formatting;
 
 public class Recorder : MonoBehaviour
 {
@@ -151,7 +152,7 @@ public class Recorder : MonoBehaviour
 		note.StartBar = AssignedBar;
 		note.StartBeat = AssignedBeat;
 		note.StartStep = AssignedStep;
-		note.Player = AttackingPlayer;
+		note.PlayerID = AttackingPlayer.ID;
 
 		obj.transform.SetParent(gameObject.transform);
 
@@ -172,9 +173,24 @@ public class Recorder : MonoBehaviour
 		//BUG: For some reason this doesn't work. I'm not sure why.
 	}
 
-	void Save() {
-		//Find all objects that has name that starts with "Attack" and has a script "AttackNote".
-		//Save them all into a list then convert to JSON.
+	void Save(bool debug = false) {
+
+		List<TimedEvent> eventObjects = new();
+
+		foreach (Transform child in gameObject.transform) {
+			
+			if (child.gameObject.TryGetComponent<TimedEvent>(out var timedEvent)) {
+				eventObjects.Add(timedEvent);
+
+				if (debug) Debug.Log($"[Recorder] Saved {timedEvent.Type} event at {timedEvent.StartStep}:{timedEvent.StartBeat}:{timedEvent.StartBar}.");
+
+				//Destroy(child.gameObject);
+			}
+		}
+
+		string json = JsonConvert.SerializeObject(eventObjects, Formatting.Indented);
+
+		Debug.Log(json);
 	}
 
 	/// <summary>

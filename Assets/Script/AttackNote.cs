@@ -4,7 +4,7 @@ public class AttackNote : TimedEvent {
 	/// <summary>
 	///		The player whom this attack is coming from.
 	/// </summary>
-	public Player Player;
+	public int PlayerID;
 
 	/// <summary>
 	///		How many times (in steps) this attack will continue after the initial attack.
@@ -74,8 +74,13 @@ public class AttackNote : TimedEvent {
 	public override void Execute(Object obj) {
 		Debug.Log($"[AttackNote] Firing {Attack}...");
 
+		//TODO: Change `Player` attribute to be a number, not a reference.
+		//      Get player object reference here only.
 		//TODO: Ensure that the scores apply.
-		if (Attack == AttackType.Projectile) Player.FireProjectile();
-		else if (Attack == AttackType.Laser) Player.FireLaser();
+
+		Player player = Player.GetPlayerInstance(PlayerID);
+
+		if (Attack == AttackType.Projectile) player.FireProjectile();
+		else if (Attack == AttackType.Laser) player.FireLaser();
 	}
 }

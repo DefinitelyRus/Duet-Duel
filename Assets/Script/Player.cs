@@ -316,6 +316,7 @@ public class Player : MonoBehaviour {
 	#region Gameplay Stats
 
 	[Header("Gameplay Stats")]
+	public int ID;
 	public float Score;
 
 	#endregion
@@ -336,6 +337,37 @@ public class Player : MonoBehaviour {
 	//TODO: Receive input keys from a centralized class.
 
 	#endregion
+
+	public static Player GetPlayerInstance(int ID, bool debug = false) {
+		Player player = null;
+
+		MusicDirector director = GameObject.Find("Music Director").GetComponent<MusicDirector>();
+
+		if (director == null) {
+			Debug.LogError("[Player] Music Director not found!");
+			return null;
+		}
+
+		//NOTE: Players have an ID attribute, but it's cheaper to just grab the instances from the director.
+		switch (ID) {
+			case 1:
+				player = director.Player1;
+				break;
+			case 2:
+				player = director.Player2;
+				break;
+			default:
+				Debug.LogError($"[Player] Invalid player ID: {ID}");
+				break;
+		}
+
+		if (player == null) Debug.LogError($"[Player] Player {ID} not found!");
+		if (debug) Debug.Log($"[Player] Player {ID} found!");
+
+		return player;
+	}
+
+	#region Unity
 
 	public void Update() {
 		#region Non-physics Inputs
@@ -374,4 +406,6 @@ public class Player : MonoBehaviour {
 
 		#endregion
 	}
+
+	#endregion
 }
