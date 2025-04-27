@@ -7,7 +7,8 @@ public class AttackNote : TimedEvent {
 	public int PlayerID;
 
 	/// <summary>
-	///		How many times (in steps) this attack will continue after the initial attack.
+	///		How many times (in steps) this attack will
+	///		continue after the initial attack.
 	///		<br/><br/>
 	///		0 = No tail. No extended attack. <br/>
 	///		1+ = Will attack once after every step for X number of times.
@@ -57,7 +58,7 @@ public class AttackNote : TimedEvent {
 		EventType type,
 		AttackType attack,
 		int beatStart,
-		int stepStart = 1,
+		int stepStart,
 		int duration = 0,
 		float offset = 0
 		)

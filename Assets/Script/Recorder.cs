@@ -1,5 +1,7 @@
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using Formatting = Newtonsoft.Json.Formatting;
 
@@ -178,19 +180,34 @@ public class Recorder : MonoBehaviour
 		List<TimedEvent> eventObjects = new();
 
 		foreach (Transform child in gameObject.transform) {
-			
+
 			if (child.gameObject.TryGetComponent<TimedEvent>(out var timedEvent)) {
 				eventObjects.Add(timedEvent);
 
 				if (debug) Debug.Log($"[Recorder] Saved {timedEvent.Type} event at {timedEvent.StartStep}:{timedEvent.StartBeat}:{timedEvent.StartBar}.");
 
-				//Destroy(child.gameObject);
+				Destroy(child.gameObject);
 			}
 		}
 
-		string json = JsonConvert.SerializeObject(eventObjects, Formatting.Indented);
+		string json = NoteJson.ToJson(eventObjects);
 
-		Debug.Log(json);
+		if (debug) Debug.Log($"Recorded notes into JSON:\n{json}");
+
+		string docs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+		string game = $"{docs}/{Application.productName}";
+		string beatmap = $"{game}/Beatmaps";
+		string file = $"DDBeatmap by {Director.Track.BeatMapCreator}, {Director.Track.Artist} - {Director.Track.Name}.json";
+		string path = $"{beatmap}/{file}";
+
+		if (!Directory.Exists(beatmap)) {
+			Directory.CreateDirectory(beatmap);
+			if (debug) Debug.Log($"[Recorder] Created {path}.");
+		}
+
+		File.WriteAllText(path, json);
+
+		if (debug) Debug.Log($"[Recorder] Saved beatmap to {path}.");
 	}
 
 	/// <summary>

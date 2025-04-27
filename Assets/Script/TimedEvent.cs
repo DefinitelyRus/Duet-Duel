@@ -52,6 +52,7 @@ public class TimedEvent : MonoBehaviour {
 	/// </summary>
 	public EventType Type = EventType.None;
 
+	//TODO: Make this the same as AttackNote.PlayerID. Make it ID-based OR enum-based.
 	/// <summary>
 	/// 	Which player this event will apply its effects to.
 	/// </summary>
@@ -62,7 +63,7 @@ public class TimedEvent : MonoBehaviour {
 	/// </summary>
 	public TargetPlayer Target = TargetPlayer.None;
 
-	public TimedEvent(EventType type, int beat, int step = 1, float offset = 0) {
+	public TimedEvent(EventType type, int beat, int step, float offset = 0) {
 		Type = type;
 		StartBeat = beat;
 		StartStep = step;
