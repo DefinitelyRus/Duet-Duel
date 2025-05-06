@@ -2289,7 +2289,7 @@ MonoBehaviour:
   MetronomeHigh: {fileID: 1086756499}
   MetronomeLow: {fileID: 1086756498}
   CurrentBar: 1
-  CurrentStep: 0
+  CurrentStep: 2
   CurrentBeat: 0
   StepDuration: 0
   LoadedBarCount: 16
