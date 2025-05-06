@@ -1,9 +1,9 @@
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using Formatting = Newtonsoft.Json.Formatting;
+using Debug = UnityEngine.Debug;
 
 public class Recorder : MonoBehaviour
 {
@@ -21,6 +21,7 @@ public class Recorder : MonoBehaviour
 	public KeyCode CustomEvent = KeyCode.Alpha7;
 
 	public KeyCode SaveKey = KeyCode.Return;
+	public KeyCode LoadKey = KeyCode.L;
 
 	public AttackNote CurrentAttack;
 
@@ -190,7 +191,7 @@ public class Recorder : MonoBehaviour
 			}
 		}
 
-		string json = NoteJson.ToJson(eventObjects);
+		string json = StrippedEvents.ToJson(eventObjects);
 
 		if (debug) Debug.Log($"Recorded notes into JSON:\n{json}");
 
@@ -208,6 +209,69 @@ public class Recorder : MonoBehaviour
 		File.WriteAllText(path, json);
 
 		if (debug) Debug.Log($"[Recorder] Saved beatmap to {path}.");
+	}
+
+	public string LoadFilePath = string.Empty;
+
+	void Load(bool debug = false) {
+		string path;
+
+		//Uses absolute path
+		if (LoadFilePath.Length > 2 && LoadFilePath[1] == ':') {
+			path = LoadFilePath;
+
+			if (debug) Debug.Log("[Recorder] Loading beatmap from the Load File Path.");
+		}
+
+		//Uses info from the Track object
+		else {
+			string docs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+			string game = $"{docs}/{Application.productName}";
+			string beatmap = $"{game}/Beatmaps";
+			string file = $"DDBeatmap by {Director.Track.BeatMapCreator}, {Director.Track.Artist} - {Director.Track.Name}.json";
+			path = $"{beatmap}/{file}";
+
+			if (debug) Debug.Log("[Recorder] Loading beatmap from existing Track data.");
+		}
+
+		//Check if the path is valid
+		if (!File.Exists(path)) {
+			Debug.LogError($"[Recorder] Beatmap path does not exist: {path}");
+			return;
+		}
+
+		if (debug) Debug.Log($"[Recorder] Loading beatmap from {path}.");
+		
+		List<StrippedEvents> strippedEvents = StrippedEvents.FromJsonPath(path);
+
+		foreach (StrippedEvents note in strippedEvents) {
+			string tickAt = $"{note.StartBar}:{note.StartBeat}:{note.StartStep} - {note.EventType}";
+			GameObject obj = new($"Event {tickAt} - {note.EventType}");
+
+			//Attack event
+			if (note.EventType == TimedEvent.EventType.Attack) {
+				AttackNote attackNote = obj.AddComponent<AttackNote>();
+				attackNote.Type = note.EventType;
+				attackNote.Attack = note.AttackType;
+				attackNote.StartBar = note.StartBar;
+				attackNote.StartBeat = note.StartBeat;
+				attackNote.StartStep = note.StartStep;
+				attackNote.PlayerID = note.OwnerID;
+			}
+
+			//Other events
+			else {
+				TimedEvent timedEvent = obj.AddComponent<TimedEvent>();
+				timedEvent.Type = note.EventType;
+				timedEvent.StartBar = note.StartBar;
+				timedEvent.StartBeat = note.StartBeat;
+				timedEvent.StartStep = note.StartStep;
+			}
+
+			obj.transform.SetParent(gameObject.transform);
+
+			if (debug) Debug.Log($"[Recorder] Loaded {note.EventType} event at {tickAt}.");
+		}
 	}
 
 	/// <summary>
@@ -303,8 +367,13 @@ public class Recorder : MonoBehaviour
 
 		#endregion
 
-		if (Input.GetKeyDown(SaveKey)) Save();
+		#region Beatmap Editor
 
+		if (Input.GetKeyDown(SaveKey)) Save(true);
+
+		if (Input.GetKeyDown(LoadKey)) Load(true);
+
+		#endregion
 	}
 
 	#endregion

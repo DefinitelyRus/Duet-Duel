@@ -1,7 +1,9 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.IO;
+using UnityEngine;
 
-public class NoteJson {
+public class StrippedEvents {
 
 	#region Event Details
 
@@ -80,9 +82,9 @@ public class NoteJson {
 	#region Conversion from TimedEvent/AttackNote to NoteJson object
 
 	/// <summary>
-	/// 	Constructor for the <see cref="NoteJson"/> class.
+	/// 	Constructor for the <see cref="StrippedEvents"/> class.
 	/// </summary>
-	public NoteJson(
+	public StrippedEvents(
 		int owner,
 		int target,
 		int startBar,
@@ -113,12 +115,12 @@ public class NoteJson {
 	#region Conversion to/from JSON
 
 	/// <summary>
-	/// 	Converts a list of <see cref="NoteJson"/> objects to a JSON string.
+	/// 	Converts a list of <see cref="StrippedEvents"/> objects to a JSON string.
 	/// </summary>
 	/// <returns>
-	///		A JSON string representation of all the <see cref="NoteJson"/> objects.
+	///		A JSON string representation of all the <see cref="StrippedEvents"/> objects.
 	/// </returns>
-	public static string ToJson(List<NoteJson> notes) {
+	public static string ToJson(List<StrippedEvents> notes) {
 		return JsonConvert.SerializeObject(notes, Formatting.Indented);
 	}
 
@@ -129,7 +131,7 @@ public class NoteJson {
 	///		A JSON string representation of all the <see cref="TimedEvent"/> objects.
 	/// </returns>
 	public static string ToJson(List<TimedEvent> events) {
-		List<NoteJson> notes = new();
+		List<StrippedEvents> notes = new();
 
 		foreach (TimedEvent timedEvent in events) {
 			AttackNote attackNote = timedEvent as AttackNote;
@@ -153,19 +155,31 @@ public class NoteJson {
 	}
 
 	/// <summary>
-	///		Converts a JSON string to a list of <see cref="NoteJson"/> objects.
+	///		Converts a JSON string to a list of <see cref="StrippedEvents"/> objects.
 	/// </summary>
 	/// <param name="json">
-	///		A list of <see cref="NoteJson"/> objects as a JSON string. <br/>
+	///		A list of <see cref="StrippedEvents"/> objects as a JSON string. <br/>
 	///		This is created using the <see cref="ToJson"/> method.
 	/// </param>
 	/// <returns>
-	///		The parsed list of <see cref="NoteJson"/> objects. <br/>
+	///		The parsed list of <see cref="StrippedEvents"/> objects. <br/>
 	///		This is not yet ready to use; you have to convert it to
 	///		<see cref="TimedEvent"/> objects first.
 	/// </returns>
-	public static List<NoteJson> FromJson(string json) {
-		return JsonConvert.DeserializeObject<List<NoteJson>>(json);
+	public static List<StrippedEvents> FromJson(string json) {
+		return JsonConvert.DeserializeObject<List<StrippedEvents>>(json);
+	}
+
+	public static List<StrippedEvents> FromJsonPath(string path) {
+		//Check if the path is valid
+		if (!File.Exists(path)) {
+			Debug.LogError($"[Recorder] File does not exist: {path}");
+			return null;
+		}
+
+		string json = File.ReadAllText(path);
+
+		return FromJson(json);
 	}
 
 	#endregion
