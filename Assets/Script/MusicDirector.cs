@@ -275,14 +275,24 @@ public class MusicDirector : MonoBehaviour {
 
 	}
 
+	/// <summary>
+	/// How long has passed since the last tick.
+	/// <br/><br/>
+	/// This is a substitute for <see cref="Time.deltaTime"/>.
+	/// </summary>
+	double MusicDeltaTime = 0d;
+
 	private void FixedUpdate() {
 
-		Timer += Time.fixedDeltaTime;
+		MusicDeltaTime = MusicPlayer.time - Timer;
+
+		//Timer += Time.fixedDeltaTime;
+		Timer = MusicPlayer.time;
 
 		//Waits until ticker starts.
 		if (!HasTickerStarted()) return;
 
-		TimeSinceLastStep += Time.deltaTime;
+		TimeSinceLastStep += MusicDeltaTime;
 
 		Tick(StepsAccumulated());
 	}

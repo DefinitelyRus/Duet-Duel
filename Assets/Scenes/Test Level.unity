@@ -2290,7 +2290,7 @@ MonoBehaviour:
   MetronomeLow: {fileID: 1086756498}
   CurrentBar: 1
   CurrentStep: 0
-  CurrentBeat: 2
+  CurrentBeat: 0
   StepDuration: 0
   LoadedBarCount: 16
   EnableMetronome: 1
@@ -2853,6 +2853,7 @@ MonoBehaviour:
   SegmentEvent: 54
   CustomEvent: 55
   SaveKey: 13
+  LoadKey: 108
   CurrentAttack: {fileID: 0}
   CurrentEvent: {fileID: 0}
   Director: {fileID: 1086756497}
@@ -2860,6 +2861,7 @@ MonoBehaviour:
   InputAllowance: 0.7
   InputType: 0
   LowPrecisionInput: 0
+  LoadFilePath: 
 --- !u!4 &1350935594
 Transform:
   m_ObjectHideFlags: 0
