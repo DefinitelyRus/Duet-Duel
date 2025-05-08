@@ -341,9 +341,7 @@ public class Player : MonoBehaviour {
 	public static Player GetPlayerInstance(int ID, bool debug = false) {
 		Player player = null;
 
-		MusicDirector director = GameObject.Find("Music Director").GetComponent<MusicDirector>();
-
-		if (director == null) {
+		if (!GameObject.Find("Music Director").TryGetComponent<MusicDirector>(out var director)) {
 			Debug.LogError("[Player] Music Director not found!");
 			return null;
 		}

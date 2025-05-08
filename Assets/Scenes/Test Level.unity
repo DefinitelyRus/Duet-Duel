@@ -1105,6 +1105,53 @@ Transform:
   - {fileID: 1662733096}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &841674796
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 841674798}
+  - component: {fileID: 841674797}
+  m_Layer: 0
+  m_Name: GameDirector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &841674797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841674796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faa9c9af24c1ffd4c9d8ded2cbe2e5ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 0}
+  MusicDirector: {fileID: 0}
+  EnvironmentObjects: []
+--- !u!4 &841674798
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841674796}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.967818, y: -0.18833505, z: 0.049755685}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &860504836
 GameObject:
   m_ObjectHideFlags: 0
@@ -2842,9 +2889,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbb6e184289a33d45a8b3a9ad80070d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InputKey1: 122
-  InputKey2: 120
-  InputKey3: 99
+  CurrentAttack: {fileID: 0}
+  CurrentEvent: {fileID: 0}
+  Director: {fileID: 1086756497}
+  SnapSteps: 0100000003000000
+  StepInput1: 122
+  StepInput2: 120
+  BeatInput: 99
+  SingleStepInput: 304
+  OffsetInput: 306
   P1Projectile: 49
   P1Laser: 50
   P2Projectile: 51
@@ -2854,14 +2907,11 @@ MonoBehaviour:
   CustomEvent: 55
   SaveKey: 13
   LoadKey: 108
-  CurrentAttack: {fileID: 0}
-  CurrentEvent: {fileID: 0}
-  Director: {fileID: 1086756497}
-  LastStepPlayed: 0
   InputAllowance: 0.7
+  LoadFilePath: 
   InputType: 0
   LowPrecisionInput: 0
-  LoadFilePath: 
+  LastStepPlayed: 0
 --- !u!4 &1350935594
 Transform:
   m_ObjectHideFlags: 0
@@ -4919,11 +4969,12 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 841674798}
   - {fileID: 519420032}
   - {fileID: 1085876408}
-  - {fileID: 1658445017}
-  - {fileID: 947385131}
-  - {fileID: 781297534}
   - {fileID: 1086756495}
   - {fileID: 1605332638}
   - {fileID: 1350935594}
+  - {fileID: 1658445017}
+  - {fileID: 947385131}
+  - {fileID: 781297534}
