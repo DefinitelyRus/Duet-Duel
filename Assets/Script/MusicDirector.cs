@@ -7,6 +7,8 @@ public class MusicDirector : MonoBehaviour {
 	#region Game Objects and Components
 
 	[Header("Game Objects and Components")]
+	public GameDirector Game;
+
 	public Player Player1;
 
 	public Player Player2;
@@ -137,17 +139,23 @@ public class MusicDirector : MonoBehaviour {
 	/// <summary>
 	///		Acts as the gate to allow the ticker to begin ticking.
 	///		<br/><br/>
-	///		If <see cref="delayedStart"/> is true, this will update the
+	///		If <see cref="DelayedStart"/> is true, this will update the
 	///		<see cref="Timer"/> return false until the delayed time has passed. <br/>
+	///		If either <see cref="DelayedStart"/> or <see cref="GameDirector.AllowStart"/> is false, this will always return true. <br/>
 	///		Once the ticker starts, this will no longer do anything.
 	/// </summary>
 	/// <returns>
 	///		A clearance to start ticking away.
 	/// </returns>
-	bool HasTickerStarted() {
+	bool HasTickerStarted(bool debug = false) {
 
+		//Does not proceed until the game is allowed to start.
+		if (!Game.AllowStart) return false;
+
+		//Checks if a delayed start is required.
+		//Checks if the game is allowed to start.
 		//This will no longer run once both the beatmap and audio have started.
-		if (delayedStart) {
+		if (DelayedStart && Game.AllowStart) {
 			double offset = Track.StartOffset;
 
 			//Music starts after timed delay.
@@ -156,8 +164,8 @@ public class MusicDirector : MonoBehaviour {
 			//Timer starts at 0.
 			//Ticker starts at 0.
 			if (offset > 0 && Timer >= offset) {
-				Debug.Log("[MusicDirector] Music started after timed delay.");
-				delayedStart = false;
+				if (debug) Debug.Log("[MusicDirector] Music started after timed delay.");
+				DelayedStart = false;
 				MusicPlayer.Play();
 			}
 
@@ -167,16 +175,20 @@ public class MusicDirector : MonoBehaviour {
 			//Timer starts at `offset`.
 			//Ticker starts at 0.
 			else if (offset < 0 && Timer >= 0) {
-				Debug.Log("[MusicDirector] Ticker started after timed delay.");
-				delayedStart = false;
+				if (debug) Debug.Log("[MusicDirector] Ticker started after timed delay.");
+				DelayedStart = false;
 			}
 
 			//Return false if the ticker hasn't started yet. (Timer < 0)
 			else return false;
 		}
 
+		if (debug) Debug.Log("[MusicDirector] Ticker started!");
+
 		return true;
 	}
+
+	
 
 	#endregion
 
@@ -204,7 +216,51 @@ public class MusicDirector : MonoBehaviour {
 	/// </summary>
 	private double Timer = 0d;
 
-	#endregion
+	private bool AttemptStart = true;
+
+	void CheckStart(bool debug = false) {
+
+		#region Checks
+
+		//Check if permitted to start, then attempt.
+		if (AttemptStart && Game.AllowStart) {
+			if (debug) Debug.Log("[MusicDirector] Attempting to start the song...");
+			AttemptStart = false;
+		}
+
+		//Attempted and permitted to start the song; cancel attempt.
+		else return;
+
+		#endregion
+
+		#region Audio/Ticker start delay
+
+		if (debug) Debug.Log("[MusicDirector] Loading configuring start delay...");
+
+		//Audio starts after delay
+		if (Track.StartOffset > 0) {
+			if (debug) Debug.Log($"[MusicDirector] Audio will start after a timed delay.");
+
+			DelayedStart = true;
+		}
+
+		//Ticker starts after delay
+		else if (Track.StartOffset < 0) {
+			if (debug) Debug.Log($"[MusicDirector] Ticker will start after a timed delay.");
+
+			Timer = -Track.StartOffset;
+			DelayedStart = true;
+			MusicPlayer.Play();
+		}
+
+		StepDuration = 60d / Track.BPM / Track.Denominator;
+
+		#endregion
+
+		AttemptStart = false;
+	}
+
+ 	#endregion
 
 	#region Flags
 
@@ -225,7 +281,7 @@ public class MusicDirector : MonoBehaviour {
 	/// <summary>
 	///		Marks whether the audio starts before or after when the ticker starts.
 	/// </summary>
-	private bool delayedStart = false;
+	private bool DelayedStart = true;
 
 	#endregion
 
@@ -249,30 +305,6 @@ public class MusicDirector : MonoBehaviour {
 
 		#endregion
 
-		#region Audio/Ticker start delay
-
-		Debug.Log("[MusicDirector] Loading configuring start delay...");
-
-		//Audio starts after delay
-		if (Track.StartOffset > 0) {
-			Debug.Log($"[MusicDirector] Audio will start after a timed delay.");
-
-			delayedStart = true;
-		}
-
-		//Ticker starts after delay
-		else if (Track.StartOffset < 0) {
-			Debug.Log($"[MusicDirector] Ticker will start after a timed delay.");
-
-			Timer = -Track.StartOffset;
-			delayedStart = true;
-			MusicPlayer.Play();
-		}
-
-		StepDuration = 60d / Track.BPM / Track.Denominator;
-
-		#endregion
-
 	}
 
 	/// <summary>
@@ -284,13 +316,24 @@ public class MusicDirector : MonoBehaviour {
 
 	private void FixedUpdate() {
 
+		#region Timer Updates
+
+		/*
+		 * This needs to be donebefore the ticker start check since it's part
+		 * of handling a delayed start, particularly when the audio begins
+		 * playing before the first tick begins.
+		 */
+
 		MusicDeltaTime = MusicPlayer.time - Timer;
 
-		//Timer += Time.fixedDeltaTime;
 		Timer = MusicPlayer.time;
+
+		#endregion
 
 		//Waits until ticker starts.
 		if (!HasTickerStarted()) return;
+
+		//BUG: For some reason, it always reaches this point even before the ticker starts. This bug doesn't break the game, but it does output a minor error.
 
 		TimeSinceLastStep += MusicDeltaTime;
 
@@ -301,8 +344,11 @@ public class MusicDirector : MonoBehaviour {
 
 		#region Checks
 
+		//Continues to attempt to start until the GameDirector allows it.
+		CheckStart(true);
+
 		//Waits until ticker starts.
-		if (HasTickerStarted()) return;
+		if (!HasTickerStarted()) return;
 
 		#endregion
 
@@ -313,7 +359,7 @@ public class MusicDirector : MonoBehaviour {
 		if (EventsNow.Count == 0 && LoadedBarCount > 0 && !HasSongEnded) {
 			int start = CurrentBar + 1;
 			int end = start + LoadedBarCount;
-			EventsNow = Track.GetEventsInRange(start, end, true);
+			EventsNow = Track.GetEventsInRange(start, end, false);
 
 			if (EventsNow.Count == 0) {
 				Debug.Log("[MusicDirector] No more events to load.");
