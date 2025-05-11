@@ -110,24 +110,26 @@ public class MusicDirector : MonoBehaviour {
 		while (CurrentStep > Track.Denominator) {
 			CurrentBeat++;
 			CurrentStep -= Track.Denominator;
-			MetronomeLow.Stop();
-			MetronomeLow.Play();
+
+			if (EnableMetronome) {
+				MetronomeLow.Stop();
+				MetronomeLow.Play();
+			}
 
 			if (debug) Debug.Log("[MusicDirector] Next beat!");
-
-			Player1.FireProjectile(); //TODO: Remove!
 		}
 
 		//Next bar
 		while (CurrentBeat > Track.Numerator) {
 			CurrentBar++;
 			CurrentBeat -= Track.Numerator;
-			MetronomeHigh.Stop();
-			MetronomeHigh.Play();
+
+			if (EnableMetronome) {
+				MetronomeHigh.Stop();
+				MetronomeHigh.Play();
+			}
 
 			if (debug) Debug.Log("[MusicDirector] Next bar!");
-
-			Player1.FireLaser(); //TODO: Remove!
 		}
 
 		if (debug) Debug.Log($"[MusicDirector] {CurrentStep}:{CurrentBeat}:{CurrentBar}");
@@ -253,8 +255,6 @@ public class MusicDirector : MonoBehaviour {
 			MusicPlayer.Play();
 		}
 
-		StepDuration = 60d / Track.BPM / Track.Denominator;
-
 		#endregion
 
 		AttemptStart = false;
@@ -289,6 +289,12 @@ public class MusicDirector : MonoBehaviour {
 
 	void Start() {
 
+		#region Instantiating values
+
+		StepDuration = 60d / Track.BPM / Track.Denominator;
+
+		#endregion
+
 		#region Loading audio and events
 
 		try {
@@ -312,7 +318,7 @@ public class MusicDirector : MonoBehaviour {
 	/// <br/><br/>
 	/// This is a substitute for <see cref="Time.deltaTime"/>.
 	/// </summary>
-	double MusicDeltaTime = 0d;
+	private double MusicDeltaTime = 0d;
 
 	private void FixedUpdate() {
 
@@ -337,7 +343,14 @@ public class MusicDirector : MonoBehaviour {
 
 		TimeSinceLastStep += MusicDeltaTime;
 
-		Tick(StepsAccumulated());
+		if (TimeSinceLastStep < 0) {
+			Debug.LogWarning("[MusicDirector] TimeSinceLastStep is negative; defaulting to 0.");
+			//TimeSinceLastStep = 0d;
+		}
+
+		//Debug.Log($"[MusicDirector] MusicDeltaTime: {MusicDeltaTime}   TimeSinceLastStep: {TimeSinceLastStep}");
+
+		Tick(StepsAccumulated(), false);
 	}
 
 	void Update() {
@@ -348,7 +361,10 @@ public class MusicDirector : MonoBehaviour {
 		CheckStart(true);
 
 		//Waits until ticker starts.
-		if (!HasTickerStarted()) return;
+		if (!HasTickerStarted()) {
+			Debug.LogWarning($"[MusicDirector] Ticker has NOT started.");
+			return;
+		}
 
 		#endregion
 
@@ -359,7 +375,7 @@ public class MusicDirector : MonoBehaviour {
 		if (EventsNow.Count == 0 && LoadedBarCount > 0 && !HasSongEnded) {
 			int start = CurrentBar + 1;
 			int end = start + LoadedBarCount;
-			EventsNow = Track.GetEventsInRange(start, end, false);
+			EventsNow = Track.GetEventsInRange(start, end, true);
 
 			if (EventsNow.Count == 0) {
 				Debug.Log("[MusicDirector] No more events to load.");
@@ -375,18 +391,22 @@ public class MusicDirector : MonoBehaviour {
 
 		#region Event Playback
 
+		List<TimedEvent> removeQueue = new();
+
 		foreach (TimedEvent e in EventsNow) {
 			double lastEventTime = 0d;
 			if (LastPlayedEvent != null) lastEventTime = LastPlayedEvent.StartTime;
 
 			bool isBeforeTimer = e.StartTime <= Timer;
-			bool isAfterLast = lastEventTime < e.StartTime;
+			bool isAfterLast = lastEventTime <= e.StartTime;
+
+			//Debug.Log($"[MusicDirector] {e.name} at {e.StartTime} --- Last event time: {lastEventTime}   isBeforeTimer: {isBeforeTimer}   isAfterLast: {isAfterLast}");
 
 			if (isAfterLast && isBeforeTimer) {
 				e.Execute(null); //TODO: FIX
 				LastPlayedEvent = e;
 
-				Debug.Log($"[MusicDirector] Executing event: {e.Type} at {e.StartTime}.");
+				Debug.Log($"[MusicDirector] Executing event: {e.Type} at {e.StartTime:F2}.");
 
 				if (e.Type == TimedEvent.EventType.Attack) {
 					AttackNote attack = (AttackNote) e;
@@ -396,6 +416,8 @@ public class MusicDirector : MonoBehaviour {
 						LongAttacks.Add(attack);
 					}
 				}
+
+				removeQueue.Add(e);
 			}
 		}
 
@@ -415,6 +437,12 @@ public class MusicDirector : MonoBehaviour {
 
 			attack.DurationLeft--;
 			if (attack.DurationLeft <= 0) LongAttacks.Remove(attack);
+		}
+
+		foreach (TimedEvent e in removeQueue) {
+			Debug.Log($"[MusicDirector] Removing event: {e.Type} at {e.StartTime:F2}.");
+			EventsNow.Remove(e);
+			Destroy(e.gameObject);
 		}
 
 		#endregion

@@ -2157,7 +2157,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.585
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2817,7 +2817,6 @@ MonoBehaviour:
   CurrentAttack: {fileID: 0}
   CurrentEvent: {fileID: 0}
   Director: {fileID: 1086756497}
-  SnapSteps: 0100000003000000
   StepInput1: 122
   StepInput2: 120
   BeatInput: 99
@@ -2835,7 +2834,7 @@ MonoBehaviour:
   InputAllowance: 0.7
   LoadFilePath: 
   InputType: 0
-  LowPrecisionInput: 0
+  SnapSteps: 0100000003000000
   LastStepPlayed: 0
 --- !u!4 &1350935594
 Transform:
@@ -3368,15 +3367,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Against All Gravity
-  FilePath: Phaera - Against All Gravity
   Artist: Phaera
   BeatMapCreator: DefinitelyRus
+  FilePath: Phaera - Against All Gravity
+  BeatmapPath: DDBeatmap by DefinitelyRus, Phaera - Against All Gravity.json
   Length: 10
   BPM: 100
   Numerator: 4
   Denominator: 4
   StartOffset: -0.052
-  Events: []
   AudioClip: {fileID: 8300000, guid: 82741402df9173b41a42fbfccc67edf0, type: 3}
 --- !u!4 &1605332638
 Transform:

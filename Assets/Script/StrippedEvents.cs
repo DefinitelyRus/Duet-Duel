@@ -171,9 +171,9 @@ public class StrippedEvents {
 	}
 
 	public static List<StrippedEvents> FromJsonPath(string path) {
-		//Check if the path is valid
+		//Check if the BeatmapPath is valid
 		if (!File.Exists(path)) {
-			Debug.LogError($"[Recorder] File does not exist: {path}");
+			Debug.LogError($"[StrippedEvents] Path does not exist: {path}");
 			return null;
 		}
 

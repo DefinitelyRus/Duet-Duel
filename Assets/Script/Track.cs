@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 /// <summary>
@@ -8,6 +9,13 @@ using UnityEngine;
 /// </summary>
 public class Track : MonoBehaviour {
 
+	#region Game Objects and Components
+
+	[Header("Game Objects and Components")]
+	public MusicDirector Director;
+
+	#endregion
+
 	#region Displayed Details
 
 	/// <summary>
@@ -15,6 +23,16 @@ public class Track : MonoBehaviour {
 	/// </summary>
 	[Header("Displayed Details")]
 	public string Name = "Untitled Track";
+
+	/// <summary>
+	/// The name of the artist.
+	/// </summary>
+	public string Artist;
+
+	/// <summary>
+	/// The creator of the beatmap.
+	/// </summary>
+	public string BeatMapCreator;
 
 	/// <summary>
 	/// The file name of the OGG audio clip or the path to it.
@@ -29,14 +47,18 @@ public class Track : MonoBehaviour {
 	public string FilePath;
 
 	/// <summary>
-	/// The name of the artist.
+	/// The file name of the JSON file or the path to it.
+	/// <br/><br/>
+	/// This must include the file extension if the file has one. <br/>
+	/// This accepts absolute and relative paths. <br/>
+	/// Absolute paths must start with "C:/" <br/>
+	/// Relative paths start from "Documents/Duet Duel/Beatmaps". <br/>
+	/// <br/><br/>
+	/// Examples: <br/>
+	/// - "C:/Users/Rus/Desktop/Confessions of a Rotten Girl.json" <br/>
+	/// - "DDBeatmap by DefinitelyRus, Phaera - Against All Gravity.json" <br/>
 	/// </summary>
-	public string Artist;
-
-	/// <summary>
-	/// The creator of the beatmap.
-	/// </summary>
-	public string BeatMapCreator;
+	public string BeatmapPath;
 
 	#endregion
 
@@ -82,13 +104,52 @@ public class Track : MonoBehaviour {
 
 	#endregion
 
-	#region Timed Events
+	#region Loading Events
 
 	/// <summary>
 	///		Helps segment the song into chunks,
 	///		allowing for more efficient searching for notes.
 	/// </summary>
-	public List<TimedEvent> Events;
+	[Header("Loading Events")]
+	public List<StrippedEvents> Events;
+
+	private void LoadAll(bool debug = false) {
+
+		#region Path initialization & validation
+
+		string path;
+
+		//Uses absolute path
+		if (BeatmapPath.Length > 2 && BeatmapPath[1] == ':') path = BeatmapPath;
+
+		//Uses relative path
+		else {
+			string docs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+			string beatmap = $"{docs}/{Application.productName}/Beatmaps";
+			path = $"{beatmap}/{BeatmapPath}";
+		}
+
+		if (debug) Debug.Log($"[Recorder] Loading beatmap from \"{path}\".");
+
+		//Check if the path is valid
+		if (!File.Exists(path)) {
+			Debug.LogError($"[Recorder] Beatmap path does not exist.");
+			return;
+		}
+
+		#endregion
+
+		#region Loading stripped events
+
+		if (debug) Debug.Log($"[Recorder] Loading beatmap from {path}.");
+
+		Events = StrippedEvents.FromJsonPath(path);
+
+		if (debug) Debug.Log($"[Recorder] Loaded {Events.Count} events.");
+
+		#endregion
+
+	}
 
 	/// <summary>
 	///		Gets all events that are scheduled to occur within the given range.
@@ -110,85 +171,44 @@ public class Track : MonoBehaviour {
 	///		A list of events that occur within the given range.
 	/// </returns>
 	public List<TimedEvent> GetEventsInRange(int start, int end, bool debug = false) {
-		List<TimedEvent> events = new();
+		List<TimedEvent> results = new();
 
 		if (start <= 1) start = 1;
-		if (end <= 0) end = int.MaxValue;
+		if (end <= 0 || end < start) end = int.MaxValue;
 
-		//Binary search: Find the first event that is within the range.
-		int lowIndex = 0, highIndex = Events.Count - 1, pointer = 0;
-		int pointerBar = 0;
-		while (lowIndex <= highIndex) {
-			if (debug) Debug.Log($"[Track] Searching for bar {start}: " +
-				$"Low: {lowIndex} -> High: {highIndex} | At {pointer} (Bar {pointerBar})");
+		if (debug) Debug.Log($"[Track] Getting events from bars {start} to {end}.");
 
-			pointer = (lowIndex + highIndex) / 2;
-			pointerBar = Events[pointer].StartBar;
+		foreach (var strippedEvent in Events) {
+			if (strippedEvent.StartBar < start || strippedEvent.StartBar > end)
+				continue;
 
-			//Closes in on the closest point to the start point.
-			if (pointerBar < start) lowIndex = pointer + 1;
-			else if (pointerBar > start) highIndex = pointer - 1;
+			// instantiate your GameObject + component exactly as before…
+			GameObject spawnedEvent = new($"Event {strippedEvent.StartBar}:{strippedEvent.StartBeat}:{strippedEvent.StartStep} - {strippedEvent.EventType}");
+			TimedEvent timedEvent;
+
+			if (strippedEvent.EventType == TimedEvent.EventType.Attack) {
+				timedEvent = spawnedEvent.AddComponent<AttackNote>();
+				((AttackNote) timedEvent).Attack = strippedEvent.AttackType;
+				((AttackNote) timedEvent).PlayerID = strippedEvent.OwnerID;
+			}
+
 			else {
-				if (debug) Debug.Log($"[Track] Ending search at bar {pointerBar}.");
-
-				//If pointing at the start with matching bar count, break.
-				if (pointerBar == start) {
-					if (debug) Debug.Log($"[Track] Starting list at bar {pointerBar}.");
-					break;
-				}
-
-				//If pointing beyond start... 
-				else {
-					if (debug) Debug.Log($"[Track] Search ended with no matches...");
-
-					//Point to the next event.
-					pointer++;
-
-					//If reached the end of the list, return empty.
-					if (pointer >= Events.Count) {
-						if (debug) Debug.Log($"[Track] No events found in range.");
-						return new();
-					}
-
-					pointerBar = Events[pointer].StartBar;
-
-					//If pointing at or before `end`...
-					if (pointerBar <= end) {
-						start = pointerBar;
-						if (debug) Debug.Log($"[Track] Substituted start at bar {pointerBar}.");
-						break;
-					}
-
-					//If pointing past `end`, return empty.
-					else {
-						if (debug) Debug.Log($"[Track] No events found in range.");
-						return new();
-					}
-				}
+				timedEvent = spawnedEvent.AddComponent<TimedEvent>();
 			}
+
+			timedEvent.Type = strippedEvent.EventType;
+			timedEvent.StartBar = strippedEvent.StartBar;
+			timedEvent.StartBeat = strippedEvent.StartBeat;
+			timedEvent.StartStep = strippedEvent.StartStep;
+
+			spawnedEvent.transform.SetParent(gameObject.transform);
+
+			results.Add(SetStartTime(timedEvent));
 		}
 
-		TimedEvent e;
-		if (debug) Debug.Log($"[Track] Checking event starting at bar {start}.");
+		if (debug) Debug.Log($"[Track] Found {results.Count} events from bar {start} to {end}.");
 
-		//Go through all items from the starting point...
-		for (int i = pointer; i < Events.Count; i++) {
-			e = Events[i];
-
-			//If the event is within the range, add it to the list.
-			if (e.StartBar >= start && e.StartBar <= end) {
-				events.Add(SetStartTime(e));
-				if (debug) Debug.Log($"[Track] Added event at bar {e.StartBar}.");
-			}
-
-			//If the event is past the end, break.
-			else if (e.StartBar > end) {
-				if (debug) Debug.Log($"[Track] No more events in range.");
-				break;
-			}
-		}
-
-		return events;
+		return results;
 	}
 
 	/// <summary>
@@ -202,26 +222,40 @@ public class Track : MonoBehaviour {
 	///		The same event, now with an auto-calculated start time.
 	/// </returns>
 	public TimedEvent SetStartTime(TimedEvent e) {
+
 		//Calculate the start time of the event.
-		double beatsPerMinute = BPM / 60d;
-		double beatsPerSecond = beatsPerMinute / Numerator;
-		double secondsPerStep = 1d / (beatsPerSecond * Denominator);
+		double secondsPerStep = 60.0 / (BPM * Denominator);
+
+		double tickerOffset = secondsPerStep * 2;
+		//NOTE: The initial "Director.CurrentStep", as set in the Inspector.
+		/*
+		 * Since this calculation does not take the MusicDirector's
+		 * timings into account, it never processed that it had a 2-step delay--
+		 * a delay that should not have been there to begin with.
+		 * 
+		 * I want to fix it but it's working and we're critically
+		 * short on time, so we're leaving this bug here.
+		 */
 
 		int barCount = (e.StartBar - 1) * Numerator * Denominator;
 		int beatCount = (e.StartBeat - 1) * Denominator;
 		int totalSteps = barCount + beatCount + (e.StartStep - 1);
 
-		e.StartTime = totalSteps * secondsPerStep + StartOffset;
+		e.StartTime = totalSteps * secondsPerStep + StartOffset + tickerOffset;
 		return e;
 	}
 
 	#endregion
 
+	#region Miscellaneous
+
 	/// <summary>
 	/// The audio clip that will be played.
 	/// </summary>
-	[Header("Audio Clip")]
+	[Header("Miscellaneous")]
 	public AudioClip AudioClip;
+
+	#endregion
 
 	#region Unity
 
@@ -231,9 +265,8 @@ public class Track : MonoBehaviour {
 	/// This game object must start before `MusicDirector`.
 	/// Otherwise, the audio clip will not be loaded.
 	/// </summary>
-	public void Start() {
-		//Debug.Log($"[Track] Loading track...");
-		//GrabAudioClip();
+	public void Awake() {
+		LoadAll(true);
 	}
 
 	#endregion

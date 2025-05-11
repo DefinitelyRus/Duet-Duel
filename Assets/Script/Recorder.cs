@@ -26,8 +26,6 @@ public class Recorder : MonoBehaviour {
 	#region Input Handling
 
 	[Header("Input Keys")]
-	public int[] SnapSteps = { 1, 3 };
-
 	public KeyCode StepInput1 = KeyCode.Z;
 	public KeyCode StepInput2 = KeyCode.X;
 	public KeyCode BeatInput = KeyCode.C;
@@ -110,7 +108,6 @@ public class Recorder : MonoBehaviour {
 
 		#region Timed Inputs
 
-		//LowPrecisionInput = Input.GetKeyDown(BeatInput);
 		bool isPressed =
 			Input.GetKeyDown(StepInput1) ||
 			Input.GetKeyDown(StepInput2) ||
@@ -127,16 +124,16 @@ public class Recorder : MonoBehaviour {
 
 		// Disables input snapping.
 		// Assigns based on StepInputAllowance by default.
-		bool isPrecise1 = Input.GetKey(SingleStepInput); // Assigns to the exact step
-		bool isPrecise2 = Input.GetKey(OffsetInput);     // ...and the exact millisecond.
-		//NOTE: isPrecise2 currently does nothing. It was meant to be used for also recording the offset.
+		bool usesExactStep = Input.GetKey(SingleStepInput); // Assigns to the exact step
 
 		int currentStep = Director.CurrentStep;
 		int assignedStep = 0;
 
+
+
 		//Input snapping
 		//Calculates where to snap to. Will snap to step 1 or 3 in a 4-step measure.
-		if (!isPrecise1 && !isPrecise2) {
+		if (!usesExactStep) {
 
 			for (int i = 0; i < SnapSteps.Length; i++) {
 
@@ -157,7 +154,7 @@ public class Recorder : MonoBehaviour {
 			}
 
 			if (assignedStep == 0) {
-				if (!isPrecise1 && !isPrecise2) Debug.LogError("[Recorder] Assigned step is 0. Falling back to currentStep.");
+				if (!usesExactStep) Debug.LogError("[Recorder] Assigned step is 0. Falling back to currentStep.");
 				assignedStep = currentStep;
 			}
 		}
@@ -214,14 +211,12 @@ public class Recorder : MonoBehaviour {
 	public int InputType = 0;
 
 	/// <summary>
-	///		If enabled, all inputs will automatically be
-	///		mapped to the first step of the current beat.
+	///		The steps in which inputs will snap to unless overridden.
 	///		<br/><br/>
-	///		This is enabled only when <see cref="BeatInput"/> is used OR
-	///		if <see cref="StepInput1"/> and <see cref="StepInput2"/> are
-	///		both NOT pressed, though the latter it won't have any effect.
+	///		Snaps to the largest value equal to or less than the current step.
+	///		For example, if the current step is 2, it will snap to 1.
 	/// </summary>
-	public bool LowPrecisionInput = false;
+	public int[] SnapSteps = { 1, 3 };
 
 	#endregion
 
@@ -348,8 +343,12 @@ public class Recorder : MonoBehaviour {
 		CurrentAttack = note;
 
 		if (debug) Debug.Log($"[Recorder] New {note.Attack} attack at {tickAt}.");
+
+		if (note.Attack == AttackNote.AttackType.Projectile) AttackingPlayer.FireProjectile();
+		else if (note.Attack == AttackNote.AttackType.Laser) AttackingPlayer.FireLaser();
 	}
 
+	//BUG: For some reason this doesn't work. I'm not sure why.
 	private void ExtendAttack(bool debug = false) {
 		int stepsToAdd = Director.StepsAccumulated();
 
@@ -358,8 +357,6 @@ public class Recorder : MonoBehaviour {
 		CurrentAttack.Duration += stepsToAdd;
 
 		if (debug) Debug.Log($"[Recorder] Increased {CurrentAttack.name} duration to {CurrentAttack.Duration}");
-
-		//BUG: For some reason this doesn't work. I'm not sure why.
 	}
 
 	#endregion
@@ -433,7 +430,7 @@ public class Recorder : MonoBehaviour {
 		List<StrippedEvents> strippedEvents = StrippedEvents.FromJsonPath(path);
 
 		foreach (StrippedEvents note in strippedEvents) {
-			string tickAt = $"{note.StartBar}:{note.StartBeat}:{note.StartStep} - {note.EventType}";
+			string tickAt = $"{note.StartBar}:{note.StartBeat}:{note.StartStep}";
 			GameObject obj = new($"Event {tickAt} - {note.EventType}");
 
 			//Attack event
