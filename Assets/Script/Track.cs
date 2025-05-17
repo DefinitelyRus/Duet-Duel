@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -182,7 +182,7 @@ public class Track : MonoBehaviour {
 			if (strippedEvent.StartBar < start || strippedEvent.StartBar > end)
 				continue;
 
-			// instantiate your GameObject + component exactly as before�
+			// instantiate your GameObject + component exactly as before…
 			GameObject spawnedEvent = new($"Event {strippedEvent.StartBar}:{strippedEvent.StartBeat}:{strippedEvent.StartStep} - {strippedEvent.EventType}");
 			TimedEvent timedEvent;
 
@@ -267,70 +267,6 @@ public class Track : MonoBehaviour {
 	/// </summary>
 	public void Awake() {
 		LoadAll(true);
-	}
-
-	#endregion
-
-	#region Unused
-
-	/// <summary>
-	/// 	Loads the audio clip from the given path.
-	/// 	<br/><br/>
-	/// 	Uses `FilePath` if no path is given.
-	/// </summary>
-	/// <param name="path">
-	///		Allows using another audio clip than what is in `FilePath`.
-	/// </param>
-	/// <param name="overrideExisting">
-	///		Allows using `path` as the new `FilePath`.
-	/// </param>
-	[Obsolete("Please manually assign the audio clip in the inspector.", true)]
-	public AudioClip GrabAudioClip(string path = null, bool overrideExisting = false, bool debug = false) {
-
-		if (debug) Debug.Log($"[Track] Loading audio clip from \"{path}\"...");
-
-		//Use existing path if no path is given.
-		if (string.IsNullOrEmpty(path)) {
-			if (debug) Debug.Log($"[Track] Using existing path: {FilePath}.");
-			path = FilePath;
-		}
-
-		//If path isn't empty and the existing path is to be overridden...
-		else if (overrideExisting) {
-			if (debug) Debug.Log($"[Track] Overriding existing path:\n\"{FilePath}\"\n to\n\"{path}\"");
-			FilePath = path;
-		}
-
-		AudioClip = Resources.Load<AudioClip>(path);
-
-		if (AudioClip == null) {
-			Debug.LogError($"[Track] Failed to load audio clip.");
-			return null;
-		} else {
-			Debug.Log($"[Track] Loaded audio clip: {AudioClip.name}.");
-			return AudioClip;
-		}
-	}
-
-	[Obsolete("Please create an instance of a Track prefab instead.", true)]
-	public Track(string name, string path, float tempo, int beatsPerBar, int stepsPerBeat, string artist = null, string beatmapper = null, float startOffset = 0) {
-		Name = name;
-		FilePath = path;
-		BPM = tempo;
-		Numerator = beatsPerBar;
-		Denominator = stepsPerBeat;
-		Artist = artist;
-		BeatMapCreator = beatmapper;
-		StartOffset = startOffset;
-
-		//Estimate the length of the song in seconds.
-		float beatsPerMinute = BPM / 60f;
-		float beatsPerSecond = beatsPerMinute / Numerator;
-		float secondsPerStep = 1f / (beatsPerSecond * Denominator);
-		float totalSteps = Length / secondsPerStep;
-		Length = (totalSteps * secondsPerStep) + startOffset;
-
-		GrabAudioClip(path, true);
 	}
 
 	#endregion
