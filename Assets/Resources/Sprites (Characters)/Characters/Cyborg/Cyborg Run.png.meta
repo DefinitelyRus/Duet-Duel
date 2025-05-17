@@ -272,7 +272,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Cyborg Run_0: 6338696407057176798
+      Cyborg Run_1: 5058880046816325290
+      Cyborg Run_2: 9179162432496339760
+      Cyborg Run_3: -6921196855250430180
+      Cyborg Run_4: -7525617649868026912
+      Cyborg Run_5: 2487575377387142613
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

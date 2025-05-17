@@ -272,7 +272,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Cyborg Doublejump_0: 2045109692693356759
+      Cyborg Doublejump_1: -6056579594311491556
+      Cyborg Doublejump_2: 364341385831210022
+      Cyborg Doublejump_3: 4390088675122690509
+      Cyborg Doublejump_4: 8903266267848518178
+      Cyborg Doublejump_5: -6213179594360355330
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

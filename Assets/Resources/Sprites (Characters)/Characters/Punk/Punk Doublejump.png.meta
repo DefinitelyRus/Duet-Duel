@@ -272,7 +272,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Punk Doublejump_0: 2763888039703651834
+      Punk Doublejump_1: 1789992205177240671
+      Punk Doublejump_2: -5751332866339377519
+      Punk Doublejump_3: 14779253901761775
+      Punk Doublejump_4: 3780693743610374296
+      Punk Doublejump_5: -1328714995097815374
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

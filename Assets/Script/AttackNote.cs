@@ -72,11 +72,13 @@ public class AttackNote : TimedEvent {
 		Offset = offset;
 	}
 
+	/// <summary>
+	///		Executes the attack.
+	///		<br/><br/>
+	///		Unless overridden again, the input object can just be null; it's never used.
+	/// </summary>
 	public override void Execute(Object obj) {
 		Debug.Log($"[AttackNote] Firing {Attack}...");
-
-		//TODO: Change `Player` attribute to be a number, not a reference.
-		//      Get player object reference here only.
 		//TODO: Ensure that the scores apply.
 
 		Player player = Player.GetPlayerInstance(PlayerID);

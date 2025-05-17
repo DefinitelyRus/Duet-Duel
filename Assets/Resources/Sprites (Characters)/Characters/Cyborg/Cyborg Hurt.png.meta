@@ -172,7 +172,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Cyborg Hurt_0: 7704359789443327404
+      Cyborg Hurt_1: 2165818431296173102
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

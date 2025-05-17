@@ -171,6 +171,16 @@ public class Track : MonoBehaviour {
 	///		A list of events that occur within the given range.
 	/// </returns>
 	public List<TimedEvent> GetEventsInRange(int start, int end, bool debug = false) {
+		if (Events == null) {
+			Debug.LogWarning("[Track] Events failed to load from the beatmap file.");
+			return new();
+		}
+
+		else if (Events.Count == 0) {
+			Debug.LogWarning("[Track] Nothing to load; 0 events found from the beatmap file.");
+			return new();
+		}
+
 		List<TimedEvent> results = new();
 
 		if (start <= 1) start = 1;

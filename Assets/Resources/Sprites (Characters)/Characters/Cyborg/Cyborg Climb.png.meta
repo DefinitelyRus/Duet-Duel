@@ -272,7 +272,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Cyborg Climb_0: 7303965174550540819
+      Cyborg Climb_1: -2457879466328070261
+      Cyborg Climb_2: 952622562846614309
+      Cyborg Climb_3: -6251607613355497113
+      Cyborg Climb_4: -6099843558278095272
+      Cyborg Climb_5: -192462500872827510
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
