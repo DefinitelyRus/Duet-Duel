@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Player : MonoBehaviour {
 
@@ -220,9 +220,10 @@ public class Player : MonoBehaviour {
 
 		//Joystick Input
 		else if (AimMode == AimType.Joystick) {
-			//Use InputSystemPackage 
-			//AimVector = new Vector2(Gamepad.rightStick.x.ReadValue(), Gamepad.rightStick.y.ReadValue()).normalized;
-			//TODO: Handle input modes via a centralized class.
+			if (ID == 1) AimVector = Controls.P1AimInput;
+			else if (ID == 2) AimVector = Controls.P2AimInput;
+
+			Debug.Log(AimVector);
 		}
 	}
 

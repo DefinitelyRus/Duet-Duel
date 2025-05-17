@@ -1,5 +1,4 @@
-using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 using UnityEngine.InputSystem.LowLevel;
@@ -11,12 +10,14 @@ public class Controls : MonoBehaviour
 	public ButtonControl P1JumpControl;
 	public Vector2 P1MovementInput;
 	public Vector2 P1AimInput;
+	public float P1AimDeadzone = 0.7f;
 
 	Gamepad Gamepad2;
 	public GamepadButton P2JumpKey;
 	public ButtonControl P2JumpControl;
 	public Vector2 P2MovementInput;
 	public Vector2 P2AimInput;
+	public float P2AimDeadzone = 0.7f;
 
 	public enum DirectionSurface { LeftStick, RightStick, Dpad }
 
@@ -37,11 +38,9 @@ public class Controls : MonoBehaviour
 			P1MovementInput = new(moveX, moveY);
 
 			//Aim
-			bool aimXOverride = dpadInput.x > rightStickInput.x;
-			bool aimYOverride = dpadInput.y > rightStickInput.y;
-			float aimX = aimXOverride ? dpadInput.x : rightStickInput.x;
-			float aimY = aimYOverride ? dpadInput.y : rightStickInput.y;
-			P1AimInput = new(aimX, aimY);
+			bool undeadzoneX = Mathf.Abs(rightStickInput.x) > P1AimDeadzone;
+			bool undeadzoneY = Mathf.Abs(rightStickInput.y) > P1AimDeadzone;
+			if (undeadzoneX || undeadzoneY) P1AimInput = rightStickInput.normalized;
 		}
 
 		if (Gamepad2 != null) {
@@ -60,11 +59,9 @@ public class Controls : MonoBehaviour
 			P2MovementInput = new(moveX, moveY);
 
 			//Aim
-			bool aimXOverride = dpadInput.x > rightStickInput.x;
-			bool aimYOverride = dpadInput.y > rightStickInput.y;
-			float aimX = aimXOverride ? dpadInput.x : rightStickInput.x;
-			float aimY = aimYOverride ? dpadInput.y : rightStickInput.y;
-			P2AimInput = new(aimX, aimY);
+			bool undeadzoneX = Mathf.Abs(rightStickInput.x) > P2AimDeadzone;
+			bool undeadzoneY = Mathf.Abs(rightStickInput.y) > P2AimDeadzone;
+			if (undeadzoneX || undeadzoneY) P2AimInput = rightStickInput.normalized;
 		}
 	}
 

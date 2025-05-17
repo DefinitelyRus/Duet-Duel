@@ -457,7 +457,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6335086348429783869, guid: 2bc09d672ef713c4f8cd62af68152f1d, type: 3}
       propertyPath: AimMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6335086348429783869, guid: 2bc09d672ef713c4f8cd62af68152f1d, type: 3}
       propertyPath: Controls
@@ -465,7 +465,7 @@ PrefabInstance:
       objectReference: {fileID: 616625400}
     - target: {fileID: 6335086348429783869, guid: 2bc09d672ef713c4f8cd62af68152f1d, type: 3}
       propertyPath: MoveMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8144209456036420854, guid: 2bc09d672ef713c4f8cd62af68152f1d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1005,9 +1005,11 @@ MonoBehaviour:
   P1JumpKey: 6
   P1MovementInput: {x: 0, y: 0}
   P1AimInput: {x: 0, y: 0}
+  P1AimDeadzone: 0.5
   P2JumpKey: 6
   P2MovementInput: {x: 0, y: 0}
   P2AimInput: {x: 0, y: 0}
+  P2AimDeadzone: 0.5
 --- !u!4 &616625401
 Transform:
   m_ObjectHideFlags: 0
