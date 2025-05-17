@@ -272,7 +272,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Punk Run Attack_0: 8775481648449773549
+      Punk Run Attack_1: 1567639793162547797
+      Punk Run Attack_2: -9058730332501804670
+      Punk Run Attack_3: 1789026558627503620
+      Punk Run Attack_4: -8186149506339114323
+      Punk Run Attack_5: 1324089757564853972
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

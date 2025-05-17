@@ -272,7 +272,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Punk Climb_0: -4831752924952027907
+      Punk Climb_1: 8429259416019732811
+      Punk Climb_2: 2030738778433540793
+      Punk Climb_3: 2121010693517666536
+      Punk Climb_4: -7955350568330804639
+      Punk Climb_5: -3763771170464824028
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
