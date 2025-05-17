@@ -2104,7 +2104,7 @@ MonoBehaviour:
   LaserRange: 50
   Lifespan: 1
   DamageCooldown: 1
-  ID: 0
+  ID: 1
   Score: 0
   Rigidbody: {fileID: 1085876411}
   Collider: {fileID: 1085876410}
@@ -3366,6 +3366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 722f87797ff8b9740b8b178bacd92d98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Director: {fileID: 1086756497}
   Name: Against All Gravity
   Artist: Phaera
   BeatMapCreator: DefinitelyRus
