@@ -11,37 +11,46 @@ public class Player : MonoBehaviour {
 
 	public float MaxVelocity;
 
-	public void MoveListener(bool debug = false) {
-		bool leftInput = Input.GetKey(KeyCode.A);
-		bool rightInput = Input.GetKey(KeyCode.D);
-		if (!leftInput && !rightInput) return;
+	public enum MoveType { Keyboard, Gamepad }
 
-		string log = "";
-		if (debug) {
-			if (leftInput) log += "L";
-			if (rightInput) log += "R";
+	public MoveType MoveMode = MoveType.Keyboard;
+
+	public void MoveListener(bool debug = false) {
+		Vector2 velocity = Vector2.zero;
+
+		//Keyboard Movement
+		if (MoveMode == MoveType.Keyboard) {
+			int leftInput = Input.GetKey(KeyCode.A) ? 1 : 0;
+			int rightInput = Input.GetKey(KeyCode.D) ? 1 : 0;
+			if (leftInput == 0 && rightInput == 0) return;
+
+			//Applies the force to the player.
+			float multiplier = Acceleration * Time.fixedDeltaTime;
+			Vector2 leftVelocity = leftInput * multiplier * Vector2.left;
+			Vector2 rightVelocity = rightInput * multiplier * Vector2.right;
+			velocity = leftVelocity + rightVelocity;
 		}
 
-		//Applies the force to the player.
-		float multiplier = Acceleration * Time.fixedDeltaTime;
-		Vector2 leftVelocity = (leftInput ? 1 : 0) * multiplier * Vector2.left;
-		Vector2 rightVelocity = (rightInput ? 1 : 0) * multiplier * Vector2.right;
-		Vector2 velocity = leftVelocity + rightVelocity;
+		//Gamepad Movement
+		else if (MoveMode == MoveType.Gamepad) {
+			Vector2 input;
+			if (ID == 1) input = Controls.P1MovementInput;
+			else if (ID == 2) input = Controls.P2MovementInput;
+			else {
+				if (debug) Debug.LogWarning($"[Player] Invalid ID; cannot retrieve gamepad.");
+				return;
+			}
+
+			//Polarized Inputs
+			float inputY = input.y;
+			inputY = (inputY > 0.9) ? 1 : 0;
+			
+			velocity = new(input.x * Acceleration * Time.deltaTime, inputY);
+		}
+
 		Rigidbody.AddForce(velocity, ForceMode2D.Force);
 
-		//Clamps the speed and logs it if debug is enabled.
-		if (debug) {
-			log += $" Velocity: {Rigidbody.linearVelocityX}";
-			bool isClamped = Rigidbody.linearVelocityX > MaxVelocity || Rigidbody.linearVelocityX < -MaxVelocity;
-
-			Rigidbody.linearVelocityX = Mathf.Clamp(Rigidbody.linearVelocityX, -MaxVelocity, MaxVelocity);
-
-			if (isClamped) Debug.Log($"{log} (Clamped to {Rigidbody.linearVelocityX})");
-			else Debug.Log(log);
-		}
-
-		//Clamps the speed without logging it.
-		else Rigidbody.linearVelocityX = Mathf.Clamp(Rigidbody.linearVelocityX, -MaxVelocity, MaxVelocity);
+		Rigidbody.linearVelocityX = Mathf.Clamp(Rigidbody.linearVelocityX, -MaxVelocity, MaxVelocity);
 	}
 
 	#endregion
@@ -88,11 +97,28 @@ public class Player : MonoBehaviour {
 	private void JumpListener(bool debug = false) {
 		if (Input.GetKeyDown(KeyCode.Space)) QueueJump(debug);
 
+		//Gamepad inputs
+		bool gamepadJump = false;
+		if (MoveMode == MoveType.Gamepad) {
+			Vector2 input;
+			if (ID == 1) input = Controls.P1MovementInput;
+			else if (ID == 2) input = Controls.P2MovementInput;
+			else {
+				if (debug) Debug.LogWarning($"[Player] Invalid ID; cannot retrieve gamepad.");
+				return;
+			}
+
+			//Polarized Inputs
+			gamepadJump = input.y > 0.9;
+		}
+
 		//TODO: Allow coyote time
-		bool doGroundedJump = Input.GetKey(KeyCode.Space) && isGrounded;
+		bool jumpInput = Input.GetKeyDown(KeyCode.Space) || gamepadJump;
+		bool doGroundedJump = jumpInput && isGrounded;
 		bool jumpOnImpact = isJumpQueued && isGrounded && !isJumping; //Input buffering
 		if (doGroundedJump || jumpOnImpact) Jump(debug);
 
+		//Apply markers
 		if (Input.GetKeyUp(KeyCode.Space)) {
 			if (debug) Debug.Log($"[Player | {name}] Jump released!");
 			isJumpQueued = false;
@@ -330,39 +356,49 @@ public class Player : MonoBehaviour {
 
 	public SpriteRenderer Sprite;
 
-	#endregion
-
-	#region Inputs
-
-	//TODO: Receive input keys from a centralized class.
+	public Controls Controls;
 
 	#endregion
 
 	public static Player GetPlayerInstance(int ID, bool debug = false) {
-		Player player = null;
-
 		if (!GameObject.Find("Music Director").TryGetComponent<MusicDirector>(out var director)) {
 			Debug.LogError("[Player] Music Director not found!");
 			return null;
 		}
 
+		Player player;
 		//NOTE: Players have an ID attribute, but it's cheaper to just grab the instances from the director.
 		switch (ID) {
 			case 1:
 				player = director.Player1;
-				break;
+
+				if (player == null) {
+					Debug.LogError($"[Player] Player {ID} not assigned in MusicDirector!");
+					return null;
+				}
+
+				else {
+					if (debug) Debug.Log($"[Player] Player {ID} found!");
+					return player;
+				}
+
 			case 2:
 				player = director.Player2;
-				break;
+
+				if (player == null) {
+					Debug.LogError($"[Player] Player {ID} not assigned in MusicDirector!");
+					return null;
+				}
+
+				else {
+					if (debug) Debug.Log($"[Player] Player {ID} found!");
+					return player;
+				}
+
 			default:
 				Debug.LogError($"[Player] Invalid player ID: {ID}");
-				break;
+				return null;
 		}
-
-		if (player == null) Debug.LogError($"[Player] Player {ID} not found!");
-		if (debug) Debug.Log($"[Player] Player {ID} found!");
-
-		return player;
 	}
 
 	#region Unity

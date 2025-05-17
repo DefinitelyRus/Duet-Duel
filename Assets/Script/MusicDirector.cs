@@ -400,8 +400,6 @@ public class MusicDirector : MonoBehaviour {
 			bool isBeforeTimer = e.StartTime <= Timer;
 			bool isAfterLast = lastEventTime <= e.StartTime;
 
-			//Debug.Log($"[MusicDirector] {e.name} at {e.StartTime} --- Last event time: {lastEventTime}   isBeforeTimer: {isBeforeTimer}   isAfterLast: {isAfterLast}");
-
 			if (isAfterLast && isBeforeTimer) {
 				e.Execute(null); //TODO: FIX
 				LastPlayedEvent = e;
