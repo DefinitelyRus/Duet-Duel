@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -125,8 +126,40 @@ public class Track : MonoBehaviour {
 		//Uses relative path
 		else {
 			string docs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-			string beatmap = $"{docs}/{Application.productName}/Beatmaps";
-			path = $"{beatmap}/{BeatmapPath}";
+			string beatmap = $"{docs}\\{Application.productName}\\Beatmaps";
+
+			string file;
+
+			if (!string.IsNullOrEmpty(BeatmapPath)) {
+				path = $"{beatmap}\\{BeatmapPath}";
+			}
+			else {
+				file = $"DDBM {Director.Track.Name} *.json";
+
+				//Get a list of all files with matching names.
+				string[] filePaths = Directory.GetFiles(beatmap, file).ToArray();
+
+				Array.Sort(filePaths, StringComparer.InvariantCultureIgnoreCase);
+
+				if (filePaths.Length == 0) {
+					Debug.LogError($"[Recorder] No beatmap found with the name \"{file}\".");
+					Events = new();
+					return;
+				}
+
+				else if (filePaths.Length > 1) {
+					Debug.LogWarning($"[Recorder] Multiple beatmaps found with the name \"{file}\". Using the last one.");
+
+					for (int i = 0; i < filePaths.Length; i++) {
+						Debug.Log($"[Recorder] Found: {filePaths[i]}");
+					}
+				}
+
+				path = filePaths[^1];
+			}
+
+
+			if (debug) Debug.Log("[Recorder] Loading beatmap from existing Track data.");
 		}
 
 		if (debug) Debug.Log($"[Recorder] Loading beatmap from \"{path}\".");
@@ -134,6 +167,7 @@ public class Track : MonoBehaviour {
 		//Check if the path is valid
 		if (!File.Exists(path)) {
 			Debug.LogError($"[Recorder] Beatmap path does not exist.");
+			Events = new();
 			return;
 		}
 
@@ -200,6 +234,10 @@ public class Track : MonoBehaviour {
 				timedEvent = spawnedEvent.AddComponent<AttackNote>();
 				((AttackNote) timedEvent).Attack = strippedEvent.AttackType;
 				((AttackNote) timedEvent).PlayerID = strippedEvent.OwnerID;
+				((AttackNote) timedEvent).Duration = strippedEvent.Duration;
+				((AttackNote) timedEvent).DurationLeft = strippedEvent.Duration;
+				((AttackNote) timedEvent).Weight = strippedEvent.Weight;
+				((AttackNote) timedEvent).ExtendedWeight = strippedEvent.ExtendedWeight;
 			}
 
 			else {
@@ -210,6 +248,8 @@ public class Track : MonoBehaviour {
 			timedEvent.StartBar = strippedEvent.StartBar;
 			timedEvent.StartBeat = strippedEvent.StartBeat;
 			timedEvent.StartStep = strippedEvent.StartStep;
+			timedEvent.Offset = strippedEvent.Offset;
+
 
 			spawnedEvent.transform.SetParent(gameObject.transform);
 

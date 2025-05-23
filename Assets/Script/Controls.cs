@@ -10,6 +10,7 @@ public class Controls : MonoBehaviour
 	public ButtonControl P1JumpControl;
 	public Vector2 P1MovementInput;
 	public Vector2 P1AimInput;
+	public float P1MoveDeadzone = 0.2f;
 	public float P1AimDeadzone = 0.7f;
 
 	Gamepad Gamepad2;
@@ -17,6 +18,7 @@ public class Controls : MonoBehaviour
 	public ButtonControl P2JumpControl;
 	public Vector2 P2MovementInput;
 	public Vector2 P2AimInput;
+	public float P2MoveDeadzone = 0.2f;
 	public float P2AimDeadzone = 0.7f;
 
 	public enum DirectionSurface { LeftStick, RightStick, Dpad }
@@ -35,6 +37,8 @@ public class Controls : MonoBehaviour
 			float moveX = moveXOverride ? dpadInput.x : leftStickInput.x;
 			float moveY = moveYOverride ? dpadInput.y : leftStickInput.y;
 			if (P1JumpControl.isPressed) moveY = 1; //Button Override
+			if (Mathf.Abs(moveX) < P1MoveDeadzone) moveX = 0; //Deadzone
+			if (moveY < P2MoveDeadzone) moveY = 0; //Deadzone
 			P1MovementInput = new(moveX, moveY);
 
 			//Aim
@@ -55,6 +59,8 @@ public class Controls : MonoBehaviour
 			bool moveYOverride = dpadInput.y > leftStickInput.y;
 			float moveX = moveXOverride ? dpadInput.x : leftStickInput.x;
 			float moveY = moveYOverride ? dpadInput.y : leftStickInput.y;
+			if (Mathf.Abs(moveX) < P2MoveDeadzone) moveX = 0; //Deadzone
+			if (moveY < P2MoveDeadzone) moveY = 0; //Deadzone
 			if (P2JumpControl.isPressed) moveY = 1; //Button Override
 			P2MovementInput = new(moveX, moveY);
 

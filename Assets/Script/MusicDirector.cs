@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -307,7 +307,7 @@ public class MusicDirector : MonoBehaviour {
 		}
 
 		Debug.Log("[MusicDirector] Loading events...");
-		EventsNow = Track.GetEventsInRange(0, LoadedBarCount, true);
+		EventsNow = Track.GetEventsInRange(0, LoadedBarCount, false);
 
 		#endregion
 
@@ -375,7 +375,7 @@ public class MusicDirector : MonoBehaviour {
 		if (EventsNow.Count == 0 && LoadedBarCount > 0 && !HasSongEnded) {
 			int start = CurrentBar + 1;
 			int end = start + LoadedBarCount;
-			EventsNow = Track.GetEventsInRange(start, end, true);
+			EventsNow = Track.GetEventsInRange(start, end, false);
 
 			if (EventsNow.Count == 0) {
 				Debug.Log("[MusicDirector] No more events to load.");

@@ -1,6 +1,7 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
@@ -43,6 +44,7 @@ public class Recorder : MonoBehaviour {
 
 	public KeyCode SaveKey = KeyCode.Return;
 	public KeyCode LoadKey = KeyCode.L;
+	public KeyCode MergeKey = KeyCode.M;
 
 	/// <summary>
 	///		Contains all the checker logic for handling user inputs.
@@ -183,6 +185,8 @@ public class Recorder : MonoBehaviour {
 		if (Input.GetKeyDown(SaveKey)) Save(true);
 
 		if (Input.GetKeyDown(LoadKey)) Load(true);
+
+		if (Input.GetKeyDown(MergeKey)) Merge();
 
 		#endregion
 	}
@@ -344,8 +348,8 @@ public class Recorder : MonoBehaviour {
 
 		if (debug) Debug.Log($"[Recorder] New {note.Attack} attack at {tickAt}.");
 
-		if (note.Attack == AttackNote.AttackType.Projectile) AttackingPlayer.FireProjectile();
-		else if (note.Attack == AttackNote.AttackType.Laser) AttackingPlayer.FireLaser();
+		if (note.Attack == AttackNote.AttackType.Projectile) AttackingPlayer.FireProjectile(note);
+		else if (note.Attack == AttackNote.AttackType.Laser) AttackingPlayer.FireLaser(note);
 	}
 
 	//BUG: For some reason this doesn't work. I'm not sure why.
@@ -385,7 +389,9 @@ public class Recorder : MonoBehaviour {
 		string docs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 		string game = $"{docs}/{Application.productName}";
 		string beatmap = $"{game}/Beatmaps";
-		string file = $"DDBeatmap by {Director.Track.BeatMapCreator}, {Director.Track.Artist} - {Director.Track.Name}.json";
+		string date = $"{DateTime.Now.Year%100}{DateTime.Now.Month:D2}{DateTime.Now.Day:D2}";
+		string time = $"{DateTime.Now.Hour:D2}{DateTime.Now.Minute:D2}{DateTime.Now.Second:D2}";
+		string file = $"DDBM {Director.Track.Name} {date} {time}.json";
 		string path = $"{beatmap}/{file}";
 
 		if (!Directory.Exists(beatmap)) {
@@ -413,8 +419,12 @@ public class Recorder : MonoBehaviour {
 			string docs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 			string game = $"{docs}/{Application.productName}";
 			string beatmap = $"{game}/Beatmaps";
-			string file = $"DDBeatmap by {Director.Track.BeatMapCreator}, {Director.Track.Artist} - {Director.Track.Name}.json";
-			path = $"{beatmap}/{file}";
+			string file = $"DDBM {Director.Track.Name} *.json";
+
+			//Get a list of all files with matching names.
+			string[] filePaths = Directory.GetFiles(beatmap, file).ToArray();
+
+			path = filePaths[^1];
 
 			if (debug) Debug.Log("[Recorder] Loading beatmap from existing Track data.");
 		}
@@ -457,6 +467,42 @@ public class Recorder : MonoBehaviour {
 
 			if (debug) Debug.Log($"[Recorder] Loaded {note.EventType} event at {tickAt}.");
 		}
+	}
+
+	#endregion
+
+	#region Merger
+
+	public string[] BeatmapFileNames;
+
+	public void Merge() {
+		string docs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+		string game = $"{docs}/{Application.productName}";
+		string beatmap = $"{game}/Beatmaps";
+		string pattern = $"DDBM {Director.Track.Name} *.json";
+
+		//Get a list of all files with matching names.
+		string[] filePaths = Directory.GetFiles(beatmap, pattern).ToArray();
+
+		List<StrippedEvents> strippedEvents = new();
+
+		foreach (string path in filePaths) {
+			strippedEvents.AddRange(StrippedEvents.FromJsonPath(path));
+		}
+
+		//Sort strippedEvents by StartBar, StartBeat, StartStep
+		strippedEvents = strippedEvents.OrderBy(x => x.StartBar)
+			.ThenBy(x => x.StartBeat)
+			.ThenBy(x => x.StartStep)
+			.ToList();
+
+		//Convert to JSON
+		string json = StrippedEvents.ToJson(strippedEvents);
+
+		//Save to the same directory with a new name.
+		string name = $"DDBM {Director.Track.Name} {DateTime.Now.Year%100}{DateTime.Now.Month:D2}{DateTime.Now.Day:D2} {DateTime.Now.Hour:D2}{DateTime.Now.Minute:D2}{DateTime.Now.Second:D2}";
+
+		File.WriteAllText($"{beatmap}/{name} Merged.json", json);
 	}
 
 	#endregion

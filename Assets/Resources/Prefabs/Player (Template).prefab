@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Acceleration: 8000
   MaxVelocity: 16
+  MoveMode: 0
   InitialJumpForce: 40
   ExtendJumpForce: 240
   ExtendMinTime: 0.2
@@ -60,11 +61,14 @@ MonoBehaviour:
   LaserRange: 50
   Lifespan: 1
   DamageCooldown: 1
+  KnockbackForceX: 100
+  KnockbackForceY: 25
   ID: 1
   Score: 0
   Rigidbody: {fileID: 7194849345979972548}
   Collider: {fileID: 9055492295541782121}
   Sprite: {fileID: 7787849833483079220}
+  Controls: {fileID: 0}
 --- !u!50 &7194849345979972548
 Rigidbody2D:
   serializedVersion: 5

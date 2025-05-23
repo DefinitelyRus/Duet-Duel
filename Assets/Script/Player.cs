@@ -40,12 +40,8 @@ public class Player : MonoBehaviour {
 				if (debug) Debug.LogWarning($"[Player] Invalid ID; cannot retrieve gamepad.");
 				return;
 			}
-
-			//Polarized Inputs
-			float inputY = input.y;
-			inputY = (inputY > 0.9) ? 1 : 0;
 			
-			velocity = new(input.x * Acceleration * Time.deltaTime, inputY);
+			velocity = new(input.x * Acceleration * Time.fixedDeltaTime, 0);
 		}
 
 		Rigidbody.AddForce(velocity, ForceMode2D.Force);
@@ -95,7 +91,7 @@ public class Player : MonoBehaviour {
 	/// </summary>
 	/// <param name="debug">Whether to print logs to console.</param>
 	private void JumpListener(bool debug = false) {
-		if (Input.GetKeyDown(KeyCode.Space)) QueueJump(debug);
+		if (Input.GetKeyDown(KeyCode.Space) && MoveMode == MoveType.Keyboard) QueueJump(debug);
 
 		//Gamepad inputs
 		bool gamepadJump = false;
@@ -113,7 +109,12 @@ public class Player : MonoBehaviour {
 		}
 
 		//TODO: Allow coyote time
-		bool jumpInput = Input.GetKeyDown(KeyCode.Space) || gamepadJump;
+		bool jumpInput;
+		if (MoveMode == MoveType.Keyboard) jumpInput = Input.GetKeyDown(KeyCode.Space);
+		else if (MoveMode == MoveType.Gamepad) jumpInput = gamepadJump;
+		else jumpInput = false;
+
+
 		bool doGroundedJump = jumpInput && isGrounded;
 		bool jumpOnImpact = isJumpQueued && isGrounded && !isJumping; //Input buffering
 		if (doGroundedJump || jumpOnImpact) Jump(debug);
@@ -222,15 +223,13 @@ public class Player : MonoBehaviour {
 		else if (AimMode == AimType.Joystick) {
 			if (ID == 1) AimVector = Controls.P1AimInput;
 			else if (ID == 2) AimVector = Controls.P2AimInput;
-
-			Debug.Log(AimVector);
 		}
 	}
 
 	public void AttackListener(bool debug = false) {
 		if (Input.GetKeyDown(KeyCode.Mouse0)) {
-			FireProjectile(debug);
-			FireLaser(debug);
+			FireProjectile(null, debug);
+			FireLaser(null, debug);
 			if (debug) Debug.Log($"[Player | {name}] Attack input received.");
 		}
 	}
@@ -242,10 +241,14 @@ public class Player : MonoBehaviour {
 	[Header("Attacks")]
 	public GameObject ProjectilePrefab;
 
-	public void FireProjectile(bool debug = false) {
+	public void FireProjectile(AttackNote attackNote, bool debug = false) {
+
 		//Instantiate a hitObject.
 		GameObject projectile = Instantiate(ProjectilePrefab, transform.position, Quaternion.identity);
 		Projectile script = projectile.GetComponent<Projectile>();
+
+		if (attackNote != null) script.ScoreWeight = attackNote.Weight;
+
 		script.Parent = gameObject;
 		script.Fire(AimVector, 1, 1);
 
@@ -260,7 +263,7 @@ public class Player : MonoBehaviour {
 
 	public float Lifespan = 1;
 
-	public void FireLaser(bool debug = false) {
+	public void FireLaser(AttackNote attackNote, bool debug = false) {
 
 		//Perform a raycast scan
 		RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, AimVector, LaserRange);
@@ -285,7 +288,7 @@ public class Player : MonoBehaviour {
 				//laser.transform.localScale = new Vector3(1, hit.distance, 1);
 
 				//If the object is a player, kill it.
-				if (hitObject.GetComponent<Player>() is Player player) player.DoDamage(hit);
+				if (hitObject.GetComponent<Player>() is Player player) player.DoDamage(attackNote, hit);
 
 				break;
 			}
@@ -316,14 +319,37 @@ public class Player : MonoBehaviour {
 	[Header("Damage")]
 	public float DamageCooldown = 1;
 
+	public float KnockbackForceX = 15;
+
+	public float KnockbackForceY = 15;
+
 	/// <summary>
 	/// 
 	/// </summary>
-	/// <param name="hitObject">
+	/// <param name="projectile">
 	///		The object that hit the player, usually a projectile.
 	/// </param>
-	public void DoDamage(GameObject hitObject) {
-		//TODO: Implement damage logic.
+	public void DoDamage(Projectile projectile, bool debug = false) {
+		Player parent = projectile.Parent.GetComponent<Player>();
+
+		if (debug) Debug.Log($"[Player | {name}] Hit by {parent.name}!");
+
+		if (projectile.Parent == gameObject) {
+			if (debug) Debug.Log($"[Player | {name}] Hit by self! Ignoring.");
+			return;
+		}
+
+		Vector2 hitFrom = (Vector2) transform.position - (Vector2) projectile.transform.position;
+		Vector2 knockback = hitFrom.normalized;
+
+		//Get whether the player was hit from the left or right
+		if (knockback.x > 0) knockback = new(KnockbackForceX, KnockbackForceY);
+		else if (knockback.x < 0) knockback = new(-KnockbackForceX, KnockbackForceY);
+
+		if (debug) Debug.Log($"[Player | {name}] Hit by {parent.name} from {knockback.normalized}. Applying knockback: {knockback}");
+
+		Rigidbody.linearVelocity = Vector2.zero;
+		Rigidbody.AddForce(knockback, ForceMode2D.Impulse);
 	}
 
 	/// <summary>
@@ -332,8 +358,22 @@ public class Player : MonoBehaviour {
 	/// <param name="hit">
 	///		The hit point object where the player was hit.
 	/// </param>
-	public void DoDamage(RaycastHit2D hit) {
-		//TODO: Implement damage logic.
+	public void DoDamage(AttackNote note, RaycastHit2D hit, bool debug = true) {
+		Vector2 knockback = hit.point;
+
+		//Get whether the player was hit from the left or right
+		if (knockback.x > 0) knockback = new(KnockbackForceX, KnockbackForceY);
+		else if (knockback.x < 0) knockback = new(-KnockbackForceX, KnockbackForceY);
+
+		if (debug) Debug.Log($"[Player | {name}] Hit from {knockback.normalized}. Applying knockback: {knockback}");
+
+		Rigidbody.linearVelocity = Vector2.zero;
+		Rigidbody.AddForce(knockback, ForceMode2D.Impulse);
+
+
+
+		if (note != null) Score += note.Weight;
+		GameDirector.UpdateScoreRatio();
 	}
 
 	#endregion
@@ -358,6 +398,8 @@ public class Player : MonoBehaviour {
 	public SpriteRenderer Sprite;
 
 	public Controls Controls;
+
+	public GameDirector GameDirector;
 
 	#endregion
 

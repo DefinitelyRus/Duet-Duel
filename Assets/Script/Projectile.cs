@@ -1,5 +1,4 @@
-using UnityEditor.AnimatedValues;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
@@ -77,6 +76,7 @@ public class Projectile : MonoBehaviour
 		}
 
 		ParentScript.Score += score;
+		ParentScript.GameDirector.UpdateScoreRatio();
 	}
 
 	#endregion
@@ -163,7 +163,7 @@ public class Projectile : MonoBehaviour
 			else AddScore(ScoreType.PlayerContact);
 
 			//Apply effects to player
-			player.DoDamage(collision.gameObject);
+			player.DoDamage(this);
 		}
 	}
 

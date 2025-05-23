@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AttackNote : TimedEvent {
 	/// <summary>
@@ -83,7 +83,7 @@ public class AttackNote : TimedEvent {
 
 		Player player = Player.GetPlayerInstance(PlayerID);
 
-		if (Attack == AttackType.Projectile) player.FireProjectile();
-		else if (Attack == AttackType.Laser) player.FireLaser();
+		if (Attack == AttackType.Projectile) player.FireProjectile(this);
+		else if (Attack == AttackType.Laser) player.FireLaser(this);
 	}
 }
