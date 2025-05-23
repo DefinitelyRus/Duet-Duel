@@ -1,0 +1,2496 @@
+fileFormatVersion: 2
+guid: f8c93265c1b7f4f41917b7850c1a87e5
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6194375914384658093
+    second: PC Computer - Very Retrouvaille - Music Notes_0
+  - first:
+      213: 5031684974094028220
+    second: PC Computer - Very Retrouvaille - Music Notes_1
+  - first:
+      213: 3987966548435164025
+    second: PC Computer - Very Retrouvaille - Music Notes_2
+  - first:
+      213: 8009234676514114732
+    second: PC Computer - Very Retrouvaille - Music Notes_3
+  - first:
+      213: -2407470558439094422
+    second: PC Computer - Very Retrouvaille - Music Notes_4
+  - first:
+      213: -7841764596660619111
+    second: PC Computer - Very Retrouvaille - Music Notes_5
+  - first:
+      213: 5101799351591316884
+    second: PC Computer - Very Retrouvaille - Music Notes_6
+  - first:
+      213: 1447790621792594679
+    second: PC Computer - Very Retrouvaille - Music Notes_7
+  - first:
+      213: -6979361864645301165
+    second: PC Computer - Very Retrouvaille - Music Notes_8
+  - first:
+      213: 7557014988056464203
+    second: PC Computer - Very Retrouvaille - Music Notes_9
+  - first:
+      213: 6960683220994241849
+    second: PC Computer - Very Retrouvaille - Music Notes_10
+  - first:
+      213: -832885007484053922
+    second: PC Computer - Very Retrouvaille - Music Notes_11
+  - first:
+      213: 2967294414560822600
+    second: PC Computer - Very Retrouvaille - Music Notes_12
+  - first:
+      213: -4835890246955020358
+    second: PC Computer - Very Retrouvaille - Music Notes_13
+  - first:
+      213: 4565662244080862762
+    second: PC Computer - Very Retrouvaille - Music Notes_14
+  - first:
+      213: -6247782418136601213
+    second: PC Computer - Very Retrouvaille - Music Notes_15
+  - first:
+      213: -5827003516814025005
+    second: PC Computer - Very Retrouvaille - Music Notes_16
+  - first:
+      213: -4441122929365527181
+    second: PC Computer - Very Retrouvaille - Music Notes_17
+  - first:
+      213: -376436775371414966
+    second: PC Computer - Very Retrouvaille - Music Notes_18
+  - first:
+      213: 5744892703026209365
+    second: PC Computer - Very Retrouvaille - Music Notes_19
+  - first:
+      213: -4675136287307146502
+    second: PC Computer - Very Retrouvaille - Music Notes_20
+  - first:
+      213: 7439423108551837578
+    second: PC Computer - Very Retrouvaille - Music Notes_21
+  - first:
+      213: -1471255729799433912
+    second: PC Computer - Very Retrouvaille - Music Notes_22
+  - first:
+      213: 4004158373050559509
+    second: PC Computer - Very Retrouvaille - Music Notes_23
+  - first:
+      213: -8184134883735894514
+    second: PC Computer - Very Retrouvaille - Music Notes_24
+  - first:
+      213: 2478372885514984282
+    second: PC Computer - Very Retrouvaille - Music Notes_25
+  - first:
+      213: 7629173037974387616
+    second: PC Computer - Very Retrouvaille - Music Notes_26
+  - first:
+      213: 8470943062246234496
+    second: PC Computer - Very Retrouvaille - Music Notes_27
+  - first:
+      213: -5624142042452420073
+    second: PC Computer - Very Retrouvaille - Music Notes_28
+  - first:
+      213: -1697448625351672957
+    second: PC Computer - Very Retrouvaille - Music Notes_29
+  - first:
+      213: 6954678394673385684
+    second: PC Computer - Very Retrouvaille - Music Notes_30
+  - first:
+      213: -906629325049340391
+    second: PC Computer - Very Retrouvaille - Music Notes_31
+  - first:
+      213: -7523558551278521940
+    second: PC Computer - Very Retrouvaille - Music Notes_32
+  - first:
+      213: 5012469328134068308
+    second: PC Computer - Very Retrouvaille - Music Notes_33
+  - first:
+      213: 1130956063729560417
+    second: PC Computer - Very Retrouvaille - Music Notes_34
+  - first:
+      213: -2610428826312746437
+    second: PC Computer - Very Retrouvaille - Music Notes_35
+  - first:
+      213: -8498763307535112688
+    second: PC Computer - Very Retrouvaille - Music Notes_36
+  - first:
+      213: 5883080045271479867
+    second: PC Computer - Very Retrouvaille - Music Notes_37
+  - first:
+      213: -6120315227297724129
+    second: PC Computer - Very Retrouvaille - Music Notes_38
+  - first:
+      213: -5853343010912202257
+    second: PC Computer - Very Retrouvaille - Music Notes_39
+  - first:
+      213: 4088024529038666731
+    second: PC Computer - Very Retrouvaille - Music Notes_40
+  - first:
+      213: 7744964470523940206
+    second: PC Computer - Very Retrouvaille - Music Notes_41
+  - first:
+      213: -2756908901411112209
+    second: PC Computer - Very Retrouvaille - Music Notes_42
+  - first:
+      213: -3427445130749703339
+    second: PC Computer - Very Retrouvaille - Music Notes_43
+  - first:
+      213: 287226418676589395
+    second: PC Computer - Very Retrouvaille - Music Notes_44
+  - first:
+      213: 1452992192946485115
+    second: PC Computer - Very Retrouvaille - Music Notes_45
+  - first:
+      213: 6221418174867810612
+    second: PC Computer - Very Retrouvaille - Music Notes_46
+  - first:
+      213: -9131394464348146529
+    second: PC Computer - Very Retrouvaille - Music Notes_47
+  - first:
+      213: -4601582696990448776
+    second: PC Computer - Very Retrouvaille - Music Notes_48
+  - first:
+      213: 5920415869162485560
+    second: PC Computer - Very Retrouvaille - Music Notes_49
+  - first:
+      213: -8312773421540573925
+    second: PC Computer - Very Retrouvaille - Music Notes_50
+  - first:
+      213: 8266400295938082997
+    second: PC Computer - Very Retrouvaille - Music Notes_51
+  - first:
+      213: 3940407573182454327
+    second: PC Computer - Very Retrouvaille - Music Notes_52
+  - first:
+      213: 9009519572190280709
+    second: PC Computer - Very Retrouvaille - Music Notes_53
+  - first:
+      213: 132237177576825244
+    second: PC Computer - Very Retrouvaille - Music Notes_54
+  - first:
+      213: -7396604206881625275
+    second: PC Computer - Very Retrouvaille - Music Notes_55
+  - first:
+      213: 3603637304214281843
+    second: PC Computer - Very Retrouvaille - Music Notes_56
+  - first:
+      213: 3995384727580710235
+    second: PC Computer - Very Retrouvaille - Music Notes_57
+  - first:
+      213: -6904632313456446475
+    second: PC Computer - Very Retrouvaille - Music Notes_58
+  - first:
+      213: 2859606125248632143
+    second: PC Computer - Very Retrouvaille - Music Notes_59
+  - first:
+      213: 3611293124265830038
+    second: PC Computer - Very Retrouvaille - Music Notes_60
+  - first:
+      213: -7899640945050339986
+    second: PC Computer - Very Retrouvaille - Music Notes_61
+  - first:
+      213: -6319222770939036461
+    second: PC Computer - Very Retrouvaille - Music Notes_62
+  - first:
+      213: 6838455086836658368
+    second: PC Computer - Very Retrouvaille - Music Notes_63
+  - first:
+      213: 8618941706365372248
+    second: PC Computer - Very Retrouvaille - Music Notes_64
+  - first:
+      213: -5937489893941370731
+    second: PC Computer - Very Retrouvaille - Music Notes_65
+  - first:
+      213: -776024957857490787
+    second: PC Computer - Very Retrouvaille - Music Notes_66
+  - first:
+      213: 2167103787085344264
+    second: PC Computer - Very Retrouvaille - Music Notes_67
+  - first:
+      213: 8014317344907801620
+    second: PC Computer - Very Retrouvaille - Music Notes_68
+  - first:
+      213: 8471164367467338077
+    second: PC Computer - Very Retrouvaille - Music Notes_69
+  - first:
+      213: -4542496990034414274
+    second: PC Computer - Very Retrouvaille - Music Notes_70
+  - first:
+      213: -5241748796358437355
+    second: PC Computer - Very Retrouvaille - Music Notes_71
+  - first:
+      213: -4962257066196309708
+    second: PC Computer - Very Retrouvaille - Music Notes_72
+  - first:
+      213: 3055813689784182870
+    second: PC Computer - Very Retrouvaille - Music Notes_73
+  - first:
+      213: -7236650423894265947
+    second: PC Computer - Very Retrouvaille - Music Notes_74
+  - first:
+      213: 6333554980079933324
+    second: PC Computer - Very Retrouvaille - Music Notes_75
+  - first:
+      213: -4267777812230944782
+    second: PC Computer - Very Retrouvaille - Music Notes_76
+  - first:
+      213: 8585028422998855460
+    second: PC Computer - Very Retrouvaille - Music Notes_77
+  - first:
+      213: 7346301655299222464
+    second: PC Computer - Very Retrouvaille - Music Notes_78
+  - first:
+      213: -2252279173420828763
+    second: PC Computer - Very Retrouvaille - Music Notes_79
+  - first:
+      213: 5969345908864044925
+    second: PC Computer - Very Retrouvaille - Music Notes_80
+  - first:
+      213: 2960826660553510603
+    second: PC Computer - Very Retrouvaille - Music Notes_81
+  - first:
+      213: 4705784598986957217
+    second: PC Computer - Very Retrouvaille - Music Notes_82
+  - first:
+      213: -2620864530851890791
+    second: PC Computer - Very Retrouvaille - Music Notes_83
+  - first:
+      213: 8244783886931888312
+    second: PC Computer - Very Retrouvaille - Music Notes_84
+  - first:
+      213: 7596233629080901666
+    second: PC Computer - Very Retrouvaille - Music Notes_85
+  - first:
+      213: -5130439724563016063
+    second: PC Computer - Very Retrouvaille - Music Notes_86
+  - first:
+      213: 2248279630941803659
+    second: PC Computer - Very Retrouvaille - Music Notes_87
+  - first:
+      213: 5621953777317894478
+    second: PC Computer - Very Retrouvaille - Music Notes_88
+  - first:
+      213: -3409493260421781270
+    second: PC Computer - Very Retrouvaille - Music Notes_89
+  - first:
+      213: 1875202535589896974
+    second: PC Computer - Very Retrouvaille - Music Notes_90
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_0
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 128
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dae022e2318d6f550800000000000000
+      internalID: 6194375914384658093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_1
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 128
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbd8b8e23d224d540800000000000000
+      internalID: 5031684974094028220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_2
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 128
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97b5e97527a185730800000000000000
+      internalID: 3987966548435164025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_3
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 125
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cac4d58e084862f60800000000000000
+      internalID: 8009234676514114732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_4
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 125
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a67c60d4842f69ed0800000000000000
+      internalID: -2407470558439094422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_5
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 125
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9983fc395a47c2390800000000000000
+      internalID: -7841764596660619111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_6
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 121
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49d2be2da7b3dc640800000000000000
+      internalID: 5101799351591316884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_7
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 121
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fae61956e5971410800000000000000
+      internalID: 1447790621792594679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_8
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 121
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35ca8e2cc53542f90800000000000000
+      internalID: -6979361864645301165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_9
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 123
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4b8865c719efd860800000000000000
+      internalID: 7557014988056464203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_10
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 123
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 935326d9280599060800000000000000
+      internalID: 6960683220994241849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_11
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 123
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e561a2e9f7ff074f0800000000000000
+      internalID: -832885007484053922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_12
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 131
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84506e37c82fd2920800000000000000
+      internalID: 2967294414560822600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_13
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 118
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abf4879217773ecb0800000000000000
+      internalID: -4835890246955020358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_14
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 130
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a264adefe9d7c5f30800000000000000
+      internalID: 4565662244080862762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_15
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 123
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38d690d2efa6b49a0800000000000000
+      internalID: -6247782418136601213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_16
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 127
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3de195b9c23522fa0800000000000000
+      internalID: -5827003516814025005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_17
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 115
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 375535fc936fd52c0800000000000000
+      internalID: -4441122929365527181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_18
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 115
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a42e79b4fb0a6caf0800000000000000
+      internalID: -376436775371414966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_19
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 115
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5526c94c975f9bf40800000000000000
+      internalID: 5744892703026209365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_20
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 114
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afad48e01549e1fb0800000000000000
+      internalID: -4675136287307146502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_21
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 114
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a878017c6e32e3760800000000000000
+      internalID: 7439423108551837578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_22
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 114
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 841fb8375bc059be0800000000000000
+      internalID: -1471255729799433912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_23
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 117
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51ca51a43d0a19730800000000000000
+      internalID: 4004158373050559509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_24
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 110
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e060a054fac1c6e80800000000000000
+      internalID: -8184134883735894514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_25
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 108
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5b94162203f46220800000000000000
+      internalID: 2478372885514984282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_26
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 113
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ab737af47440e960800000000000000
+      internalID: 7629173037974387616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_27
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 96
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0891fb985d5de8570800000000000000
+      internalID: 8470943062246234496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_28
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 96
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71a98414c9803f1b0800000000000000
+      internalID: -5624142042452420073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_29
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 96
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38b307df7737178e0800000000000000
+      internalID: -1697448625351672957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_30
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 93
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d05799072bf38060800000000000000
+      internalID: 6954678394673385684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_31
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 93
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91e5b71be610b63f0800000000000000
+      internalID: -906629325049340391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_32
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 93
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca1f030fb53f69790800000000000000
+      internalID: -7523558551278521940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_33
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 91
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 458d8f6fb4edf8540800000000000000
+      internalID: 5012469328134068308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_34
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 91
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16bac234c86f1bf00800000000000000
+      internalID: 1130956063729560417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_35
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 91
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3a503820d4e5cbd0800000000000000
+      internalID: -2610428826312746437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_36
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 97
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 016ee38dcc35e0a80800000000000000
+      internalID: -8498763307535112688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_37
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 90
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b36789b9126e4a150800000000000000
+      internalID: 5883080045271479867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_38
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 93
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1941834ab5401ba0800000000000000
+      internalID: -6120315227297724129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_39
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 102
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe1101e3b8fb4cea0800000000000000
+      internalID: -5853343010912202257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_40
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 89
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bebee6e56a49bb830800000000000000
+      internalID: 4088024529038666731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_41
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 83
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6dc99fb624ab7b60800000000000000
+      internalID: 7744964470523940206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_42
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 83
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fea374df5fd7db9d0800000000000000
+      internalID: -2756908901411112209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_43
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 83
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55b858e10d44f60d0800000000000000
+      internalID: -3427445130749703339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_44
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 89
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 353635fe7ee6cf300800000000000000
+      internalID: 287226418676589395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_45
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 82
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b77bdf183b01a2410800000000000000
+      internalID: 1452992192946485115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_46
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 89
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 439a7281edae65650800000000000000
+      internalID: 6221418174867810612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_47
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 82
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f947f886d15c64180800000000000000
+      internalID: -9131394464348146529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_48
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 89
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 873ec45dae4e320c0800000000000000
+      internalID: -4601582696990448776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_49
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 82
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 837f3048dda892250800000000000000
+      internalID: 5920415869162485560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_50
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 64
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1df3c6bd9813ac80800000000000000
+      internalID: -8312773421540573925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_51
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 51
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b8c29a954728b270800000000000000
+      internalID: 8266400295938082997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_52
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 64
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73a9cc58fc32fa630800000000000000
+      internalID: 3940407573182454327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_53
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 51
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50cb451015e380d70800000000000000
+      internalID: 9009519572190280709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_54
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 64
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c91219b230dc5d100800000000000000
+      internalID: 132237177576825244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_55
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 51
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54b29a8a9abf95990800000000000000
+      internalID: -7396604206881625275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_56
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 61
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37ed9090901b20230800000000000000
+      internalID: 3603637304214281843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_57
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 61
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b551874cd35727730800000000000000
+      internalID: 3995384727580710235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_58
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 61
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f3beb34e71dd20a0800000000000000
+      internalID: -6904632313456446475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_59
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 57
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f45d9fcbe9c5fa720800000000000000
+      internalID: 2859606125248632143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_60
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 57
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 696ecab86f3ed1230800000000000000
+      internalID: 3611293124265830038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_61
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 57
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e65b4212a66de5290800000000000000
+      internalID: -7899640945050339986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_62
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 59
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3dc7e99de5c9d48a0800000000000000
+      internalID: -6319222770939036461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_63
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 59
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c0bc577ba217ee50800000000000000
+      internalID: 6838455086836658368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_64
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 59
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85705bb11d1ac9770800000000000000
+      internalID: 8618941706365372248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_65
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 64
+        width: 68
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 590272e466cc99da0800000000000000
+      internalID: -5937489893941370731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_66
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 47
+        width: 173
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d98111299610b35f0800000000000000
+      internalID: -776024957857490787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_67
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 64
+        width: 30
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80e20ac9969131e10800000000000000
+      internalID: 2167103787085344264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_68
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 50
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4143b7cd923983f60800000000000000
+      internalID: 8014317344907801620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_69
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 50
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5956dc2c1f9f8570800000000000000
+      internalID: 8471164367467338077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_70
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 50
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e35b7b30e0fc5f0c0800000000000000
+      internalID: -4542496990034414274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_71
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 32
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 516593fdd319147b0800000000000000
+      internalID: -5241748796358437355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_72
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 19
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 439623d4d75822bb0800000000000000
+      internalID: -4962257066196309708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_73
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 32
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 658ac574c5e686a20800000000000000
+      internalID: 3055813689784182870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_74
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 19
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5af2a18e7c0429b90800000000000000
+      internalID: -7236650423894265947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_75
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 32
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c871211a2be45e750800000000000000
+      internalID: 6333554980079933324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_76
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 19
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f74ea101bec5c4c0800000000000000
+      internalID: -4267777812230944782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_77
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 29
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42f8a738dd5242770800000000000000
+      internalID: 8585028422998855460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_78
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 29
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cb69f0ee6e43f560800000000000000
+      internalID: 7346301655299222464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_79
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 29
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a7bd3d560c4eb0e0800000000000000
+      internalID: -2252279173420828763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_80
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 25
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7fc5472a7067d250800000000000000
+      internalID: 5969345908864044925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_81
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 25
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bce4ccf1928f61920800000000000000
+      internalID: 2960826660553510603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_82
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 25
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a12f14192e4e4140800000000000000
+      internalID: 4705784598986957217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_83
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 27
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 999f62a5891d0abd0800000000000000
+      internalID: -2620864530851890791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_84
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 27
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b8807e234b5b6270800000000000000
+      internalID: 8244783886931888312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_85
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 27
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2285e343d3e3b6960800000000000000
+      internalID: 7596233629080901666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_86
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 30
+        width: 41
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1865ed3b0440dc8b0800000000000000
+      internalID: -5130439724563016063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_87
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 30
+        width: 41
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b845806996e733f10800000000000000
+      internalID: 2248279630941803659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_88
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 18
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e49d2b09c21350e40800000000000000
+      internalID: 5621953777317894478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_89
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 18
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae8a874a1fb0fa0d0800000000000000
+      internalID: -3409493260421781270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Very Retrouvaille - Music Notes_90
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 18
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e036fb755ce060a10800000000000000
+      internalID: 1875202535589896974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      PC Computer - Very Retrouvaille - Music Notes_0: 6194375914384658093
+      PC Computer - Very Retrouvaille - Music Notes_1: 5031684974094028220
+      PC Computer - Very Retrouvaille - Music Notes_10: 6960683220994241849
+      PC Computer - Very Retrouvaille - Music Notes_11: -832885007484053922
+      PC Computer - Very Retrouvaille - Music Notes_12: 2967294414560822600
+      PC Computer - Very Retrouvaille - Music Notes_13: -4835890246955020358
+      PC Computer - Very Retrouvaille - Music Notes_14: 4565662244080862762
+      PC Computer - Very Retrouvaille - Music Notes_15: -6247782418136601213
+      PC Computer - Very Retrouvaille - Music Notes_16: -5827003516814025005
+      PC Computer - Very Retrouvaille - Music Notes_17: -4441122929365527181
+      PC Computer - Very Retrouvaille - Music Notes_18: -376436775371414966
+      PC Computer - Very Retrouvaille - Music Notes_19: 5744892703026209365
+      PC Computer - Very Retrouvaille - Music Notes_2: 3987966548435164025
+      PC Computer - Very Retrouvaille - Music Notes_20: -4675136287307146502
+      PC Computer - Very Retrouvaille - Music Notes_21: 7439423108551837578
+      PC Computer - Very Retrouvaille - Music Notes_22: -1471255729799433912
+      PC Computer - Very Retrouvaille - Music Notes_23: 4004158373050559509
+      PC Computer - Very Retrouvaille - Music Notes_24: -8184134883735894514
+      PC Computer - Very Retrouvaille - Music Notes_25: 2478372885514984282
+      PC Computer - Very Retrouvaille - Music Notes_26: 7629173037974387616
+      PC Computer - Very Retrouvaille - Music Notes_27: 8470943062246234496
+      PC Computer - Very Retrouvaille - Music Notes_28: -5624142042452420073
+      PC Computer - Very Retrouvaille - Music Notes_29: -1697448625351672957
+      PC Computer - Very Retrouvaille - Music Notes_3: 8009234676514114732
+      PC Computer - Very Retrouvaille - Music Notes_30: 6954678394673385684
+      PC Computer - Very Retrouvaille - Music Notes_31: -906629325049340391
+      PC Computer - Very Retrouvaille - Music Notes_32: -7523558551278521940
+      PC Computer - Very Retrouvaille - Music Notes_33: 5012469328134068308
+      PC Computer - Very Retrouvaille - Music Notes_34: 1130956063729560417
+      PC Computer - Very Retrouvaille - Music Notes_35: -2610428826312746437
+      PC Computer - Very Retrouvaille - Music Notes_36: -8498763307535112688
+      PC Computer - Very Retrouvaille - Music Notes_37: 5883080045271479867
+      PC Computer - Very Retrouvaille - Music Notes_38: -6120315227297724129
+      PC Computer - Very Retrouvaille - Music Notes_39: -5853343010912202257
+      PC Computer - Very Retrouvaille - Music Notes_4: -2407470558439094422
+      PC Computer - Very Retrouvaille - Music Notes_40: 4088024529038666731
+      PC Computer - Very Retrouvaille - Music Notes_41: 7744964470523940206
+      PC Computer - Very Retrouvaille - Music Notes_42: -2756908901411112209
+      PC Computer - Very Retrouvaille - Music Notes_43: -3427445130749703339
+      PC Computer - Very Retrouvaille - Music Notes_44: 287226418676589395
+      PC Computer - Very Retrouvaille - Music Notes_45: 1452992192946485115
+      PC Computer - Very Retrouvaille - Music Notes_46: 6221418174867810612
+      PC Computer - Very Retrouvaille - Music Notes_47: -9131394464348146529
+      PC Computer - Very Retrouvaille - Music Notes_48: -4601582696990448776
+      PC Computer - Very Retrouvaille - Music Notes_49: 5920415869162485560
+      PC Computer - Very Retrouvaille - Music Notes_5: -7841764596660619111
+      PC Computer - Very Retrouvaille - Music Notes_50: -8312773421540573925
+      PC Computer - Very Retrouvaille - Music Notes_51: 8266400295938082997
+      PC Computer - Very Retrouvaille - Music Notes_52: 3940407573182454327
+      PC Computer - Very Retrouvaille - Music Notes_53: 9009519572190280709
+      PC Computer - Very Retrouvaille - Music Notes_54: 132237177576825244
+      PC Computer - Very Retrouvaille - Music Notes_55: -7396604206881625275
+      PC Computer - Very Retrouvaille - Music Notes_56: 3603637304214281843
+      PC Computer - Very Retrouvaille - Music Notes_57: 3995384727580710235
+      PC Computer - Very Retrouvaille - Music Notes_58: -6904632313456446475
+      PC Computer - Very Retrouvaille - Music Notes_59: 2859606125248632143
+      PC Computer - Very Retrouvaille - Music Notes_6: 5101799351591316884
+      PC Computer - Very Retrouvaille - Music Notes_60: 3611293124265830038
+      PC Computer - Very Retrouvaille - Music Notes_61: -7899640945050339986
+      PC Computer - Very Retrouvaille - Music Notes_62: -6319222770939036461
+      PC Computer - Very Retrouvaille - Music Notes_63: 6838455086836658368
+      PC Computer - Very Retrouvaille - Music Notes_64: 8618941706365372248
+      PC Computer - Very Retrouvaille - Music Notes_65: -5937489893941370731
+      PC Computer - Very Retrouvaille - Music Notes_66: -776024957857490787
+      PC Computer - Very Retrouvaille - Music Notes_67: 2167103787085344264
+      PC Computer - Very Retrouvaille - Music Notes_68: 8014317344907801620
+      PC Computer - Very Retrouvaille - Music Notes_69: 8471164367467338077
+      PC Computer - Very Retrouvaille - Music Notes_7: 1447790621792594679
+      PC Computer - Very Retrouvaille - Music Notes_70: -4542496990034414274
+      PC Computer - Very Retrouvaille - Music Notes_71: -5241748796358437355
+      PC Computer - Very Retrouvaille - Music Notes_72: -4962257066196309708
+      PC Computer - Very Retrouvaille - Music Notes_73: 3055813689784182870
+      PC Computer - Very Retrouvaille - Music Notes_74: -7236650423894265947
+      PC Computer - Very Retrouvaille - Music Notes_75: 6333554980079933324
+      PC Computer - Very Retrouvaille - Music Notes_76: -4267777812230944782
+      PC Computer - Very Retrouvaille - Music Notes_77: 8585028422998855460
+      PC Computer - Very Retrouvaille - Music Notes_78: 7346301655299222464
+      PC Computer - Very Retrouvaille - Music Notes_79: -2252279173420828763
+      PC Computer - Very Retrouvaille - Music Notes_8: -6979361864645301165
+      PC Computer - Very Retrouvaille - Music Notes_80: 5969345908864044925
+      PC Computer - Very Retrouvaille - Music Notes_81: 2960826660553510603
+      PC Computer - Very Retrouvaille - Music Notes_82: 4705784598986957217
+      PC Computer - Very Retrouvaille - Music Notes_83: -2620864530851890791
+      PC Computer - Very Retrouvaille - Music Notes_84: 8244783886931888312
+      PC Computer - Very Retrouvaille - Music Notes_85: 7596233629080901666
+      PC Computer - Very Retrouvaille - Music Notes_86: -5130439724563016063
+      PC Computer - Very Retrouvaille - Music Notes_87: 2248279630941803659
+      PC Computer - Very Retrouvaille - Music Notes_88: 5621953777317894478
+      PC Computer - Very Retrouvaille - Music Notes_89: -3409493260421781270
+      PC Computer - Very Retrouvaille - Music Notes_9: 7557014988056464203
+      PC Computer - Very Retrouvaille - Music Notes_90: 1875202535589896974
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
