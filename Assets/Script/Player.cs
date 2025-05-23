@@ -485,4 +485,35 @@ public class Player : MonoBehaviour {
 	}
 
 	#endregion
+
+	#region Static
+
+	public static Player GetPlayerInstance(int ID, bool debug = false) {
+		Player player = null;
+
+		if (!GameObject.Find("Music Director").TryGetComponent<MusicDirector>(out var director)) {
+			Debug.LogError("[Player] Music Director not found!");
+			return null;
+		}
+
+		//NOTE: Players have an ID attribute, but it's cheaper to just grab the instances from the director.
+		switch (ID) {
+			case 1:
+				player = director.Player1;
+				break;
+			case 2:
+				player = director.Player2;
+				break;
+			default:
+				Debug.LogError($"[Player] Invalid player ID: {ID}");
+				break;
+		}
+
+		if (player == null) Debug.LogError($"[Player] Player {ID} not found!");
+		if (debug) Debug.Log($"[Player] Player {ID} found!");
+
+		return player;
+
+		#endregion
+	}
 }
