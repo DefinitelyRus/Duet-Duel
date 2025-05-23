@@ -76,7 +76,7 @@ public class Projectile : MonoBehaviour
 		}
 
 		ParentScript.Score += score;
-		ParentScript.GameDirector.UpdateScoreRatio();
+		ParentScript.GameDirector.UpdateScore();
 	}
 
 	#endregion
@@ -109,7 +109,7 @@ public class Projectile : MonoBehaviour
 	public void InitializeLongNote(bool debug = false) {
 		//Disable trail when firing short notes.
 		if (Length <= 0) {
-			Trail.enabled = false;
+			//Trail.enabled = false;
 			if (debug) Debug.Log($"[Projectile] Trail length is 0. Disabling trail.");
 			return;
 		}

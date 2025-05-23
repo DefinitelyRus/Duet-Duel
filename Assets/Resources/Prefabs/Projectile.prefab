@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7614414004442231558}
   - component: {fileID: 7588825932025795576}
   - component: {fileID: -2149162924938948178}
-  - component: {fileID: -1266498137838649768}
+  - component: {fileID: -5178028092114024163}
   m_Layer: 7
   m_Name: Projectile
   m_TagString: Untagged
@@ -53,15 +53,15 @@ MonoBehaviour:
   Body: {fileID: 7176260087435121820}
   Trigger: {fileID: 7614414004442231558}
   Collider: {fileID: 7588825932025795576}
-  Trail: {fileID: -1266498137838649768}
+  Trail: {fileID: -5178028092114024163}
   BaseVelocity: 25
-  BaseTorque: 5
-  ScoreWeight: 0
+  BaseTorque: 1
+  ScoreWeight: 1
   Length: 0
   Lifespan: 2
   PlayerContactMultiplier: 1
-  ExpiredMultiplier: -0.1
-  EnvironmentMultiplier: -0.1
+  ExpiredMultiplier: -0.2
+  EnvironmentMultiplier: -0.2
   playerCollision: 2
   environmentCollision: 1
 --- !u!50 &7176260087435121820
@@ -207,7 +207,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3650578301743431588, guid: 244bd0dbca974674c823de0d93ab8146, type: 3}
+  m_Sprite: {fileID: -6247782418136601213, guid: f8c93265c1b7f4f41917b7850c1a87e5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -218,7 +218,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!96 &-1266498137838649768
+--- !u!96 &-5178028092114024163
 TrailRenderer:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -263,17 +263,17 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0
+  m_Time: 0.5
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1.0222446
+    widthMultiplier: 1
     widthCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1
+        value: 0.5
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -294,8 +294,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 1, g: 1, b: 1, a: 0.7058824}
+      key1: {r: 0.4198113, g: 1, b: 0.533281, a: 0.3137255}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -319,7 +319,7 @@ TrailRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
+      m_ColorSpace: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0

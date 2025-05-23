@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MusicDirector : MonoBehaviour {
 
@@ -320,6 +322,8 @@ public class MusicDirector : MonoBehaviour {
 	/// </summary>
 	private double MusicDeltaTime = 0d;
 
+	public TextMeshProUGUI WinnerText;
+
 	private void FixedUpdate() {
 
 		#region Timer Updates
@@ -333,6 +337,27 @@ public class MusicDirector : MonoBehaviour {
 		MusicDeltaTime = MusicPlayer.time - Timer;
 
 		Timer = MusicPlayer.time;
+
+		if (Timer >= 301) {
+			WinnerText.enabled = true;
+
+			float p1Score = Game.Player1.Score;
+			float p2Score = Game.Player2.Score;
+
+			if (p1Score > p2Score) {
+				WinnerText.text = $"Game Over!\nP1 wins!";
+			}
+			else if (p2Score > p1Score) {
+				WinnerText.text = $"Game Over!\nP2 wins!";
+			}
+			else {
+				WinnerText.text = $"Game Over!\nIt's a tie!";
+			}
+		}
+
+		if (Timer >= 316) {
+			SceneManager.LoadScene(0);
+		}
 
 		#endregion
 

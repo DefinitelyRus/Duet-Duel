@@ -25,7 +25,7 @@ public class Player : MonoBehaviour {
 			if (leftInput == 0 && rightInput == 0) return;
 
 			//Applies the force to the player.
-			float multiplier = Acceleration * Time.fixedDeltaTime;
+			float multiplier = Acceleration * Time.deltaTime;
 			Vector2 leftVelocity = leftInput * multiplier * Vector2.left;
 			Vector2 rightVelocity = rightInput * multiplier * Vector2.right;
 			velocity = leftVelocity + rightVelocity;
@@ -41,8 +41,11 @@ public class Player : MonoBehaviour {
 				return;
 			}
 			
-			velocity = new(input.x * Acceleration * Time.fixedDeltaTime, 0);
+			velocity = new(input.x * Acceleration * Time.deltaTime, 0);
 		}
+
+		if (velocity.x > 0) Sprite.flipX = false;
+		else if (velocity.x < 0) Sprite.flipX = true;
 
 		Rigidbody.AddForce(velocity, ForceMode2D.Force);
 
@@ -373,7 +376,7 @@ public class Player : MonoBehaviour {
 
 
 		if (note != null) Score += note.Weight;
-		GameDirector.UpdateScoreRatio();
+		GameDirector.UpdateScore();
 	}
 
 	#endregion
@@ -454,10 +457,19 @@ public class Player : MonoBehaviour {
 		AttackListener();
 
 		#endregion
+
+
+
+		#region Physics Inputs
+
+		MoveListener();
+
+		JumpListener();
+
+		#endregion
 	}
 
 	public void FixedUpdate() {
-
 		#region Checks
 
 		if (!isGrounded) {
@@ -474,46 +486,7 @@ public class Player : MonoBehaviour {
 		}
 
 		#endregion
-
-		#region Physics Inputs
-
-		JumpListener();
-
-		MoveListener();
-
-		#endregion
 	}
 
 	#endregion
-
-	#region Static
-
-	public static Player GetPlayerInstance(int ID, bool debug = false) {
-		Player player = null;
-
-		if (!GameObject.Find("Music Director").TryGetComponent<MusicDirector>(out var director)) {
-			Debug.LogError("[Player] Music Director not found!");
-			return null;
-		}
-
-		//NOTE: Players have an ID attribute, but it's cheaper to just grab the instances from the director.
-		switch (ID) {
-			case 1:
-				player = director.Player1;
-				break;
-			case 2:
-				player = director.Player2;
-				break;
-			default:
-				Debug.LogError($"[Player] Invalid player ID: {ID}");
-				break;
-		}
-
-		if (player == null) Debug.LogError($"[Player] Player {ID} not found!");
-		if (debug) Debug.Log($"[Player] Player {ID} found!");
-
-		return player;
-
-		#endregion
-	}
 }

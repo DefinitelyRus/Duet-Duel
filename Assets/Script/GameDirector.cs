@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameDirector : MonoBehaviour
@@ -8,6 +9,9 @@ public class GameDirector : MonoBehaviour
 	public Player Player2;
 	public MusicDirector MusicDirector;
 	public GameObject[] EnvironmentObjects;
+
+	public TextMeshProUGUI P1Score;
+	public TextMeshProUGUI P2Score;
 
 	public bool AllowStart;
 	public float BootupDelay = 5f;
@@ -43,7 +47,7 @@ public class GameDirector : MonoBehaviour
 		}
 	}
 
-	public void UpdateScoreRatio() {
+	public void UpdateScore() {
 		float p1Score = Player1.Score;
 		float p2Score = Player2.Score;
 
@@ -53,5 +57,8 @@ public class GameDirector : MonoBehaviour
 		else scoreRatio = Player1.Score / Player2.Score;
 
 		ScoreRatio = Mathf.Clamp(scoreRatio, 0, 1);
+
+		P1Score.text = $"P1\n{p1Score:F0}";
+		P2Score.text = $"P2\n{p2Score:F0}";
 	}
 }
